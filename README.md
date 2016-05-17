@@ -1,11 +1,10 @@
-<<<<<<< HEAD
 Name
 ====
 SitemapXML
 
 Version Date
 ==============
-v 3.3.2 02.12.2015 12:23:38
+v 3.6 26.04.2016 10:33 
 
 Author
 ======
@@ -28,6 +27,7 @@ Zen-Cart Version
 Support thread
 ==============
 http://www.zen-cart.com/showthread.php?126810-SitemapXML-v-2
+
 http://zen-cart.su/plugins/sitemap-xml/msg7/
 
 Affected files
@@ -130,21 +130,21 @@ Upgrade:
 Deleting OLD copies of this mod (circa 1.3.8 - such as version 2.1.0, which was around for a number of years)
 ========
 a) Delete the following files from your admin directory:
-./includes/boxes/extra_boxes/googlesitemap_tools_dhtml.php
-./includes/extra_datafiles/googlesitemap.php
-./includes/languages/english/googlesitemap.php
-./includes/languages/english/extra_definitions/googlesitemap.php
-./includes/languages/italian/extra_definitions/googlesitemap.php
-./includes/languages/italian/googlesitemap.php
-./includes/languages/russian/googlesitemap.php
-./includes/languages/russian/extra_definitions/googlesitemap.php
-./googlesitemap.php
+- ./includes/boxes/extra_boxes/googlesitemap_tools_dhtml.php
+- ./includes/extra_datafiles/googlesitemap.php
+- ./includes/languages/english/googlesitemap.php
+- ./includes/languages/english/extra_definitions/googlesitemap.php
+- ./includes/languages/italian/extra_definitions/googlesitemap.php
+- ./includes/languages/italian/googlesitemap.php
+- ./includes/languages/russian/googlesitemap.php
+- ./includes/languages/russian/extra_definitions/googlesitemap.php
+- ./googlesitemap.php
 
 b) Run the following SQL in admin->tools->install SQL Patches:
-SET @configuration_group_id=0;
-SELECT (@configuration_group_id:=configuration_group_id) FROM configuration_group WHERE configuration_group_title= 'Google XML Sitemap' LIMIT 1;
-DELETE FROM configuration WHERE configuration_group_id = @configuration_group_id AND configuration_group_id != 0;
-DELETE FROM configuration_group WHERE configuration_group_id = @configuration_group_id AND configuration_group_id != 0;
+- SET @configuration_group_id=0;
+- SELECT (@configuration_group_id:=configuration_group_id) FROM configuration_group WHERE configuration_group_title= 'Google XML Sitemap' LIMIT 1;
+- DELETE FROM configuration WHERE configuration_group_id = @configuration_group_id AND configuration_group_id != 0;
+- DELETE FROM configuration_group WHERE configuration_group_id = @configuration_group_id AND configuration_group_id != 0;
 
 Un-Install:
 ========
