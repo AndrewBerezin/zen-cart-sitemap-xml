@@ -102,12 +102,11 @@ Install:
 1. Unzip the SitemapXML package to your local hard drive, retaining the folder structure.
 2. Rename the "YOUR_Admin" folder in the "sitemapXML" folder to match the name of your admin folder.
      sitemapXML/YOUR_Admin/
-3. Upload the files from "sitemapXML" to the root of your store. (DO NOT upload the "sitemapXML" folder, just the CONTENTS of this folder
-   (copy ALL of the add-on files to your store!! Most issues are caused by store owners who decide to NOT load ALL of the module files)
+3. Upload the files from "sitemapXML" to the root of your store. (DO NOT upload the "sitemapXML" folder, just the CONTENTS of this folder  (copy ALL of the add-on files to your store!! Most issues are caused by store owners who decide to NOT load ALL of the module files)
 4. Set permissions on the directory /sitemap/ to 777.
 5. Run YOUR_Admin/-install-sitemapxml.php
 6. Go to Admin -> Tools -> Sitemap XML and click "Install SitemapXML SQL".
-6.1 If you are using the Admin Profiles contribution, you need to set the Sitemap XML plugin Admin configuration permission. Go to Tools->Admin Settings->Permissions button and put a checkmark at "sitemap XML" plugin. (There are two checkboxes for Sitemap XML; the second is added after the installation done in step 6.)
+ If you are using the Admin Profiles contribution, you need to set the Sitemap XML plugin Admin configuration permission. Go to Tools->Admin Settings->Permissions button and put a checkmark at "sitemap XML" plugin. (There are two checkboxes for Sitemap XML; the second is added after the installation done in step 6.)
 7. Go to Admin -> Configuration -> Sitemap XML and setup all parameters.
 8. Go to Admin -> Tools -> Sitemap XML (If error messages occur, change permissions on the XML files to 777).
 9. To have this update and automatically notify Google, you will need to set up a Cron job via your host's control panel.
@@ -121,10 +120,9 @@ Upgrade:
 ========
 0. BACK UP your database & store.
 1. Unzip the SitemapXML package to your local hard drive, retaining the folder structure.
-2. Rename the "admin" folder in the "sitemapXML" folder to match the name of your admin folder.
-     sitemapXML/admin/
-3. Upload the files from "sitemapXML" to the root of your store. (DO NOT upload the "sitemapXML" folder, just the CONTENTS of this folder
-   (copy ALL of the add-on files to your store!! Most issues are caused by store owners who decide to NOT load ALL of the module files)
+2. Rename the "YOUR_Admin" folder in the "sitemapXML" folder to match the name of your admin folder.
+     sitemapXML/YOUR_Admin/
+3. Upload the files from "sitemapXML" to the root of your store. (DO NOT upload the "sitemapXML" folder, just the CONTENTS of this folder (copy ALL of the add-on files to your store!! Most issues are caused by store owners who decide to NOT load ALL of the module files)
 4. Go to Admin -> Tools -> XML Sitemap and click "Update SitemapXML".
 
 Deleting OLD copies of this mod (circa 1.3.8 - such as version 2.1.0, which was around for a number of years)
@@ -154,15 +152,22 @@ Un-Install:
 History
 =======
 v 2.0.0 02.02.2009 19:21 - Initial version
+
 v 2.1.0 30.04.2009 10:35 - Lot of changes and bug fixed
+
 v 3.0.2 11.08.2011 16:14 - Lot of changes and bug fixed, Zen-Cart 1.5.0 Support, MagicSeo Support
+
 v 3.0.3 27.08.2011 13:11 - Small bug fix, delete Zen-Cart 1.5.0 Autoinstall
+
 v 3.0.4 30.09.2011 14:58 - Code cleaning, Readme corrected, Small bug fix, Zen-Cart 1.5.0 compliant - replace admin $_GET by $_POST
+
 v 3.0.5 02.12.2011 02:11 - Support Box News module, cleaning
+
 v 3.1.0 14.12.2011 13:32 - Code cleaning, Readme corrected, Small bug fix,
                            Replace Configuration parameter 'Generate language for default language' by 'Using parameter language in links',
                            Modified algorithm for processing multi-language links
                            Add Sitemap Files List to admin
+                           
 v 3.2.2 07.05.2012 19:12 - Bug fixes
                            Traditional code cleaning
                            Correct MagicSeo Support
@@ -171,22 +176,32 @@ v 3.2.2 07.05.2012 19:12 - Bug fixes
                            Add 'Start Security Token'
                            Rename sitemapxml_homepage.php to sitemapxml_mainpage.php
                            Add image sitemap support http://support.google.com/webmasters/bin/answer.py?answer=178636 for products, categories, manufacturers
+                           
 v 3.2.4 28.05.2012 13:38 - Bug fixes
                            Add parameter "Check Dublicates"
                            Add parameter "Sitemap directory"
+                           
 v 3.2.5 31.05.2012 14:52 - Add parameter "Use cPath parameter in products url". Coordinate this value with the value of variable $includeCPath in file init_canonical.php
+
 v 3.2.6 17.06.2012 16:13 - Bug fixes
                            Rewrite gss.xls
+                           
 v 3.2.7 24.09.2012 13:23 - ReadMe editing - thanks to Scott C Wilson aka swguy (http://www.zen-cart.com/member.php?22320-swguy)
                            Products additional images sitemap support
                            Bug fix 'inline=yes'
+                           
 v 3.2.8 24.01.2013 18:10 - Add url encoded for RFC 3986 compatibility.
+
 v 3.2.9 24.02.2013 13:48 - Bug fixes
                            Delete xml validations
                            Delete absolute path from information message
+                           
 v 3.2.10 22.04.2013 8:15 - Add confirm() to delete/truncate
+
 v 3.2.12 19.09.2013 8:06 - Replace absolute path to .xsl
+
 v 3.3.1 31.01.2015 16:27 - Bug fixes
                            Add Product reviews pages
                            Add plugin control
+                           
 v 3.6 26.04.2016 10:33   - Bug fixes
