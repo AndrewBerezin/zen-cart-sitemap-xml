@@ -1,48 +1,48 @@
 SitemapXML
-
-Version Date
 ==============
+Version Date
+--------------
 v 3.6 26.04.2016 10:33 
 
 Author
-======
+--------------
 Andrew Berezin http://eCommerce-Service.com
 
 Thanks
-======
+--------------
 Special thanks to DivaVocals for the quality of the readme.
 
 Description
-===========
+--------------
 This Script generates an Sitemap as described here:
 http://www.sitemaps.org/
 http://support.google.com/webmasters/bin/answer.py?hl=en&answer=156184&topic=8476&ctx=topic
 
 Zen-Cart Version
-================
+--------------
 1.3.8, 1.3.9x, 1.5.5
 
 Support thread
-==============
+--------------
 http://www.zen-cart.com/showthread.php?126810-SitemapXML-v-2
 
 http://zen-cart.su/plugins/sitemap-xml/msg7/
 
 Affected files
-==============
+--------------
 None
 
 Affects DB
-==========
+--------------
 Yes (creates new records into configuration_group, configuration and admin_pages tables).
 
 DISCLAIMER
-==========
+--------------
 Installation of this contribution is done at your own risk.
 Backup your ZenCart database and any and all applicable files before proceeding.
 
 Features:
-=========
+--------------
 - supports Search-Engine Safe URLs (including MagicSeo)
 - could be accessed by http or command line
 - autogenerates multiple sitemaps for sites with over 50.000 URLs
@@ -95,7 +95,7 @@ Comments and suggestions are welcome.
 If you need any more sitemaps (faq, news, etc) you may ask me, but I will do only if it matches with my interests.
 
 Install:
-========
+--------------
 0. BACK UP your database & store.
 1. Unzip the SitemapXML package to your local hard drive, retaining the folder structure.
 2. Rename the "YOUR_Admin" folder in the "sitemapXML" folder to match the name of your admin folder.
@@ -115,7 +115,7 @@ Install:
   <FilesMatch ".*\.(js|JS|css|CSS|jpg|JPG|gif|GIF|png|PNG|swf|SWF|xsl|XSL)$">
 
 Upgrade:
-========
+--------------
 0. BACK UP your database & store.
 1. Unzip the SitemapXML package to your local hard drive, retaining the folder structure.
 2. Rename the "YOUR_Admin" folder in the "sitemapXML" folder to match the name of your admin folder.
@@ -124,7 +124,7 @@ Upgrade:
 4. Go to Admin -> Tools -> XML Sitemap and click "Update SitemapXML".
 
 Deleting OLD copies of this mod (circa 1.3.8 - such as version 2.1.0, which was around for a number of years)
-========
+--------------
 a) Delete the following files from your admin directory:
 - ./includes/boxes/extra_boxes/googlesitemap_tools_dhtml.php
 - ./includes/extra_datafiles/googlesitemap.php
@@ -143,12 +143,12 @@ b) Run the following SQL in admin->tools->install SQL Patches:
 - DELETE FROM configuration_group WHERE configuration_group_id = @configuration_group_id AND configuration_group_id != 0;
 
 Un-Install:
-========
+--------------
 1. Go to Admin -> Tools -> Sitemap XML and click "Un-Install SitemapXML SQL".
 2. Delete all files that were copied from the installation package.
 
 History
-=======
+--------------
 v 2.0.0 02.02.2009 19:21 - Initial version
 
 v 2.1.0 30.04.2009 10:35 - Lot of changes and bug fixed
