@@ -1,18 +1,16 @@
-SitemapXML
-==============
-Version Date
---------------
+# SitemapXML
+
+## Version Date
 v 3.6 26.04.2016 10:33 
 
 Author
---------------
 Andrew Berezin http://eCommerce-Service.com
 
 Thanks
 --------------
 Special thanks to DivaVocals for the quality of the readme.
 
-Description
+## Description
 --------------
 This Script generates an Sitemap as described here:
 http://www.sitemaps.org/
@@ -43,41 +41,41 @@ Backup your ZenCart database and any and all applicable files before proceeding.
 
 Features:
 --------------
-- supports Search-Engine Safe URLs (including MagicSeo)
-- could be accessed by http or command line
-- autogenerates multiple sitemaps for sites with over 50.000 URLs
-- autogenerates multiple sitemaps if filesize exceeded 10MB
-- writes files compressed or uncompressed (You can use the gzip feature or compress your Sitemap files using gzip)
-- using index.php wrapper - http://domain.com/index.php?main_page=sitemapxml
-- using languages file and etc.
-- auto-notify Google and other SE.
-- generation of a sitemap index file
-- generation of xml-sitemaps for (separate files):
-1. Products with images (supports multilangual products, support hideCategories)
-2. Categories with images (supports multilangual categories, support hideCategories)
-3. Manufacturers with images
-4. Main (Home) page
-5. Reviews
-6. EZ-pages
-- multi-language support,
-- 'EZ pages rel=nofollow attribute' support (http://www.zen-cart.com/index.php?main_page=product_contrib_info&products_id=944),
-- 'date_added'/'last_modified' support,
-- check internal links ('alt_url') by "noindex" rule (main_page in ROBOTS_PAGES_TO_SKIP),
-- toc_chapter proccessing
-7. Testimonial Manager http://www.zen-cart.com/downloads.php?do=file&id=299
-8. News Box Manager http://www.zen-cart.com/downloads.php?do=file&id=147
-9. News and Article Manager & Optional Sideboxes http://www.zen-cart.com/downloads.php?do=file&id=791
-10. Product reviews page
+* supports Search-Engine Safe URLs (including MagicSeo)
+* could be accessed by http or command line
+* autogenerates multiple sitemaps for sites with over 50.000 URLs
+* autogenerates multiple sitemaps if filesize exceeded 10MB
+* writes files compressed or uncompressed (You can use the gzip feature or compress your Sitemap files using gzip)
+* using index.php wrapper - http://domain.com/index.php?main_page=sitemapxml
+* using languages file and etc.
+* auto-notify Google and other SE.
+* generation of a sitemap index file
+* generation of xml-sitemaps for (separate files):
+  1. Products with images (supports multilangual products, support hideCategories)
+  2. Categories with images (supports multilangual categories, support hideCategories)
+  3. Manufacturers with images
+  4. Main (Home) page
+  5. Reviews
+  6. EZ-pages
+    * multi-language support,
+    * 'EZ pages rel=nofollow attribute' support (http://www.zen-cart.com/index.php?main_page=product_contrib_info&products_id=944),
+    * 'date_added'/'last_modified' support,
+    * check internal links ('alt_url') by "noindex" rule (main_page in ROBOTS_PAGES_TO_SKIP),
+    * toc_chapter proccessing
+  7. Testimonial Manager http://www.zen-cart.com/downloads.php?do=file&id=299
+  8. News Box Manager http://www.zen-cart.com/downloads.php?do=file&id=147
+  9. News and Article Manager & Optional Sideboxes http://www.zen-cart.com/downloads.php?do=file&id=791
+  10. Product reviews page
 
 If the products, categories, reviews have not changed since the last generation (time creation corresponding xml-sitemap file), a new xml-sitemap file not created (using existing xml-sitemap).
 
 Priority is calculated on the basis of the positions in the selection from the database, ie the operator ORDER BY in the sql query. First item have priority=1.00, last=0.10. So can no longer be situations where all items in the file have the same priority.
-Products - ORDER BY p.products_sort_order ASC, last_date DESC
-Categories - ORDER BY c.sort_order ASC, last_date DESC
-Reviews - ORDER BY r.reviews_rating ASC, last_date DESC
-EZ-pages - ORDER BY p.sidebox_sort_order ASC, last_date DESC
-Testimonials - ORDER BY last_date DESC
-Box News - ORDER BY last_date DESC
+* Products - ORDER BY p.products_sort_order ASC, last_date DESC
+* Categories - ORDER BY c.sort_order ASC, last_date DESC
+* Reviews - ORDER BY r.reviews_rating ASC, last_date DESC
+* EZ-pages - ORDER BY p.sidebox_sort_order ASC, last_date DESC
+* Testimonials - ORDER BY last_date DESC
+* Box News - ORDER BY last_date DESC
 
 $_GET parameters:
 -------------------------
