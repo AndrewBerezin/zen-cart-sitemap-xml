@@ -72,7 +72,7 @@ class zen_SiteMapXML {
   var $statisticModuleQueries = 0;
   var $statisticModuleQueriesTime = 0;
 
-  function zen_SiteMapXML($inline=false, $ping=false, $rebuild=false, $genxml=true) {
+  function __construct($inline=false, $ping=false, $rebuild=false, $genxml=true) {
     global $db;
     $this->statisticTotalTime = microtime(true);
     $this->statisticTotalQueries = $db->count_queries;
