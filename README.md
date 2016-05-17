@@ -1,5 +1,3 @@
-Name
-====
 SitemapXML
 
 Version Date
