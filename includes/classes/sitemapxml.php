@@ -502,7 +502,7 @@ class zen_SiteMapXML {
     if ( SITEMAPXML_USE_EXISTING_FILES == 'true'
       && file_exists($this->savepath . $filename)
       && (filemtime($this->savepath . $filename) >= strtotime($last_date))
-      && $this->_checkFContentSitemap($filename)) {
+      && $this->_checkFContentSitemap($this->savepath . $filename)) {
       echo '"' . $filename . '" ' . TEXT_FILE_NOT_CHANGED . '<br />';
       return false;
     }
