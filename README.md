@@ -23,7 +23,9 @@ Zen-Cart Version
 Support thread
 --------------
 http://www.zen-cart.com/showthread.php?126810-SitemapXML-v-2
+
 http://zen-cart.su/plugins/sitemap-xml/msg7/
+
 https://github.com/AndrewBerezin/zen-cart-sitemap-xml
 
 Affected files
