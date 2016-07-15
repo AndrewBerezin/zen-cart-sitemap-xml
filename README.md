@@ -15,7 +15,6 @@ Special thanks to DivaVocals for the quality of the readme.
 This Script generates an Sitemap as described here:
 http://www.sitemaps.org/
 http://support.google.com/webmasters/bin/answer.py?hl=en&answer=156184&topic=8476&ctx=topic
-https://github.com/AndrewBerezin/zen-cart-sitemap-xml
 
 Zen-Cart Version
 --------------
@@ -24,8 +23,8 @@ Zen-Cart Version
 Support thread
 --------------
 http://www.zen-cart.com/showthread.php?126810-SitemapXML-v-2
-
 http://zen-cart.su/plugins/sitemap-xml/msg7/
+https://github.com/AndrewBerezin/zen-cart-sitemap-xml
 
 Affected files
 --------------
