@@ -1,7 +1,7 @@
 # SitemapXML
 
 ## Version Date
-v 3.6 26.04.2016 10:33 
+v 3.7 07.07.2016 11:25:41
 
 Author
 Andrew Berezin http://eCommerce-Service.com
@@ -15,6 +15,7 @@ Special thanks to DivaVocals for the quality of the readme.
 This Script generates an Sitemap as described here:
 http://www.sitemaps.org/
 http://support.google.com/webmasters/bin/answer.py?hl=en&answer=156184&topic=8476&ctx=topic
+https://github.com/AndrewBerezin/zen-cart-sitemap-xml
 
 Zen-Cart Version
 --------------
@@ -163,7 +164,7 @@ v 3.1.0 14.12.2011 13:32 - Code cleaning, Readme corrected, Small bug fix,
                            Replace Configuration parameter 'Generate language for default language' by 'Using parameter language in links',
                            Modified algorithm for processing multi-language links
                            Add Sitemap Files List to admin
-                           
+
 v 3.2.2 07.05.2012 19:12 - Bug fixes
                            Traditional code cleaning
                            Correct MagicSeo Support
@@ -172,26 +173,26 @@ v 3.2.2 07.05.2012 19:12 - Bug fixes
                            Add 'Start Security Token'
                            Rename sitemapxml_homepage.php to sitemapxml_mainpage.php
                            Add image sitemap support http://support.google.com/webmasters/bin/answer.py?answer=178636 for products, categories, manufacturers
-                           
+
 v 3.2.4 28.05.2012 13:38 - Bug fixes
                            Add parameter "Check Dublicates"
                            Add parameter "Sitemap directory"
-                           
+
 v 3.2.5 31.05.2012 14:52 - Add parameter "Use cPath parameter in products url". Coordinate this value with the value of variable $includeCPath in file init_canonical.php
 
 v 3.2.6 17.06.2012 16:13 - Bug fixes
                            Rewrite gss.xls
-                           
+
 v 3.2.7 24.09.2012 13:23 - ReadMe editing - thanks to Scott C Wilson aka swguy (http://www.zen-cart.com/member.php?22320-swguy)
                            Products additional images sitemap support
                            Bug fix 'inline=yes'
-                           
+
 v 3.2.8 24.01.2013 18:10 - Add url encoded for RFC 3986 compatibility.
 
 v 3.2.9 24.02.2013 13:48 - Bug fixes
                            Delete xml validations
                            Delete absolute path from information message
-                           
+
 v 3.2.10 22.04.2013 8:15 - Add confirm() to delete/truncate
 
 v 3.2.12 19.09.2013 8:06 - Replace absolute path to .xsl
@@ -199,5 +200,7 @@ v 3.2.12 19.09.2013 8:06 - Replace absolute path to .xsl
 v 3.3.1 31.01.2015 16:27 - Bug fixes
                            Add Product reviews pages
                            Add plugin control
-                           
+
 v 3.6 26.04.2016 10:33   - Bug fixes
+
+v 3.7 07.07.2016 11:25   - Add configuration parameter for categories paging

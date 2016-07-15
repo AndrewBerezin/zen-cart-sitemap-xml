@@ -3,12 +3,12 @@
  * Sitemap XML Feed
  *
  * @package Sitemap XML Feed
- * @copyright Copyright 2005-2015 Andrew Berezin eCommerce-Service.com
- * @copyright Copyright 2003-2015 Zen Cart Development Team
+ * @copyright Copyright 2005-2016 Andrew Berezin eCommerce-Service.com
+ * @copyright Copyright 2003-2016 Zen Cart Development Team
  * @copyright Portions Copyright 2003 osCommerce
  * @license http://www.zen-cart.com/license/2_0.txt GNU Public License V2.0
  * @link http://www.sitemaps.org/
- * @version $Id: sitemapxml.php, v 3.3.1 16.04.2015 14:32:18 AndrewBerezin $
+ * @version $Id: sitemapxml.php, v 3.7 07.07.2016 11:25:41 AndrewBerezin $
  */
 
 define('SITEMAPXML_SITEMAPINDEX_HTTP_LINK', HTTP_CATALOG_SERVER . DIR_WS_CATALOG . SITEMAPXML_SITEMAPINDEX . '.xml');
@@ -134,6 +134,8 @@ define('TEXT_CONFIGURATION_TITLE_SITEMAPXML_CATEGORIES_ORDERBY', 'Categories ord
 define('TEXT_CONFIGURATION_DESCRIPTION_SITEMAPXML_CATEGORIES_ORDERBY', '');
 define('TEXT_CONFIGURATION_TITLE_SITEMAPXML_CATEGORIES_CHANGEFREQ', 'Category changefreq');
 define('TEXT_CONFIGURATION_DESCRIPTION_SITEMAPXML_CATEGORIES_CHANGEFREQ', 'How frequently the Category pages page is likely to change.');
+define('TEXT_CONFIGURATION_TITLE_SITEMAPXML_CATEGORIES_PAGING', 'Category paging');
+define('TEXT_CONFIGURATION_DESCRIPTION_SITEMAPXML_CATEGORIES_PAGING', 'Add all category pages (with page=) to sitemap');
 define('TEXT_CONFIGURATION_TITLE_SITEMAPXML_CATEGORIES_IMAGES', 'Add Categories Images');
 define('TEXT_CONFIGURATION_DESCRIPTION_SITEMAPXML_CATEGORIES_IMAGES', 'Generate Categories Image tags for categories urls');
 define('TEXT_CONFIGURATION_TITLE_SITEMAPXML_CATEGORIES_IMAGES_CAPTION', 'Use Categories Images Caption/Title');

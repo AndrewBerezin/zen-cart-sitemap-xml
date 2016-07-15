@@ -3,15 +3,15 @@
  * Sitemap XML Feed
  *
  * @package Sitemap XML Feed
- * @copyright Copyright 2005-2015 Andrew Berezin eCommerce-Service.com
- * @copyright Copyright 2003-2015 Zen Cart Development Team
+ * @copyright Copyright 2005-2016 Andrew Berezin eCommerce-Service.com
+ * @copyright Copyright 2003-2016 Zen Cart Development Team
  * @copyright Portions Copyright 2003 osCommerce
  * @license http://www.zen-cart.com/license/2_0.txt GNU Public License V2.0
  * @link http://www.sitemaps.org/
- * @version $Id: sitemapxml_install.php, v 3.6 26.04.2016 10:33:09 AndrewBerezin $
+ * @version $Id: sitemapxml_install.php, v 3.7 07.07.2016 11:25:41 AndrewBerezin $
  */
 
-$current_version = '3.6 26.04.2016 10:33:09';
+$current_version = '3.7 07.07.2016 11:25:41';
 
 if (defined('SITEMAPXML_VERSION')) {
   $default['SITEMAPXML_SITEMAPINDEX'] = 'sitemapindex';
@@ -68,6 +68,7 @@ Bing => http://www.bing.com/webmaster/ping.aspx?siteMap=%s', TEXT_CONFIGURATION_
 'SITEMAPXML_CATEGORIES_IMAGES' => array(TEXT_CONFIGURATION_TITLE_SITEMAPXML_CATEGORIES_IMAGES, 'false', TEXT_CONFIGURATION_DESCRIPTION_SITEMAPXML_CATEGORIES_IMAGES, 42, null, 'zen_cfg_select_option(array(\'true\', \'false\'),'),
 'SITEMAPXML_CATEGORIES_IMAGES_CAPTION' => array(TEXT_CONFIGURATION_TITLE_SITEMAPXML_CATEGORIES_IMAGES_CAPTION, 'false', TEXT_CONFIGURATION_DESCRIPTION_SITEMAPXML_CATEGORIES_IMAGES_CAPTION, 43, null, 'zen_cfg_select_option(array(\'true\', \'false\'),'),
 'SITEMAPXML_CATEGORIES_IMAGES_LICENSE' => array(TEXT_CONFIGURATION_TITLE_SITEMAPXML_CATEGORIES_IMAGES_LICENSE, '', TEXT_CONFIGURATION_DESCRIPTION_SITEMAPXML_CATEGORIES_IMAGES_LICENSE, 44, null, null),
+'SITEMAPXML_CATEGORIES_PAGING' => array(TEXT_CONFIGURATION_TITLE_SITEMAPXML_CATEGORIES_PAGING, 'false', TEXT_CONFIGURATION_DESCRIPTION_SITEMAPXML_CATEGORIES_PAGING, 45, null, 'zen_cfg_select_option(array(\'true\', \'false\'),'),
 
 'SITEMAPXML_REVIEWS_ORDERBY' => array(TEXT_CONFIGURATION_TITLE_SITEMAPXML_REVIEWS_ORDERBY, 'reviews_rating ASC, last_date DESC', TEXT_CONFIGURATION_DESCRIPTION_SITEMAPXML_REVIEWS_ORDERBY, 50, null, null),
 'SITEMAPXML_REVIEWS_CHANGEFREQ' => array(TEXT_CONFIGURATION_TITLE_SITEMAPXML_REVIEWS_CHANGEFREQ, 'weekly', TEXT_CONFIGURATION_DESCRIPTION_SITEMAPXML_REVIEWS_CHANGEFREQ, 51, null, 'zen_cfg_select_option(array(\'no\', \'always\', \'hourly\', \'daily\', \'weekly\', \'monthly\', \'yearly\', \'never\'),'),

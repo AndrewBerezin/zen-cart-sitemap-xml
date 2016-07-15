@@ -8,10 +8,11 @@
  * @copyright Portions Copyright 2003 osCommerce
  * @link hideCategories http://www.zen-cart.com/downloads.php?do=file&id=254
  * @license http://www.zen-cart.com/license/2_0.txt GNU Public License V2.0
- * @version $Id: sitemapxml_categories.php, v 3.6 26.04.2016 10:33:09 AndrewBerezin $
+ * @version $Id: sitemapxml_categories.php, v 3.7 07.07.2016 11:25:41 AndrewBerezin $
  */
 // BOF hideCategories
 // BOF products_in_subcategories
+// BOF categories_paging
 
 echo '<h3>' . TEXT_HEAD_CATEGORIES . '</h3>';
 // BOF hideCategories
@@ -74,10 +75,14 @@ if ($sitemapXML->SitemapOpen('categories', $last_date)) {
       }
       $cat_path = $sitemapXML->GetFullcPath($categories->fields['categories_id']);
       $sitemapXML->writeItem(FILENAME_DEFAULT, 'cPath=' . $cat_path, $categories->fields['language_id'], $categories->fields['last_date'], SITEMAPXML_CATEGORIES_CHANGEFREQ, $xtra);
-      $total_pages = ceil($products->fields['total']/MAX_DISPLAY_PRODUCTS_LISTING);
-      for ($ind_page=2; $ind_page <= $total_pages; $ind_page++) {
-        $sitemapXML->writeItem(FILENAME_DEFAULT, 'cPath=' . $cat_path . '&page=' . $ind_page, $categories->fields['language_id'], $categories->fields['last_date'], SITEMAPXML_CATEGORIES_CHANGEFREQ);
+// BOF categories_paging
+      if (SITEMAPXML_CATEGORIES_PAGING == 'true') {
+        $total_pages = ceil($products->fields['total']/MAX_DISPLAY_PRODUCTS_LISTING);
+        for ($ind_page=2; $ind_page <= $total_pages; $ind_page++) {
+          $sitemapXML->writeItem(FILENAME_DEFAULT, 'cPath=' . $cat_path . '&page=' . $ind_page, $categories->fields['language_id'], $categories->fields['last_date'], SITEMAPXML_CATEGORIES_CHANGEFREQ);
+        }
       }
+// EOF categories_paging
     }
     $categories->MoveNext();
   }
