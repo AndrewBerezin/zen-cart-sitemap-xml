@@ -8,30 +8,25 @@
  * @copyright Portions Copyright 2003 osCommerce
  * @license http://www.zen-cart.com/license/2_0.txt GNU Public License V2.0
  * @link http://www.sitemaps.org/
- * @version $Id: sitemapxml.php, v 3.7 07.07.2016 11:25:41 AndrewBerezin $
+ * @version $Id: sitemapxml.php, v 3.8 07.07.2016 12:39:33 AndrewBerezin $
  */
 
 define('SITEMAPXML_SITEMAPINDEX_HTTP_LINK', HTTP_CATALOG_SERVER . DIR_WS_CATALOG . SITEMAPXML_SITEMAPINDEX . '.xml');
 define('HEADING_TITLE', 'Sitemap XML');
-define('TEXT_SITEMAPXML_OVERVIEW_HEAD', 'Обзор:');
-define('TEXT_SITEMAPXML_OVERVIEW_TEXT', 'Данный модуль автоматически создаёт несколько sitemapsXML для Вашего магазина: основной файл sitemapsXML, sitemapsXML для главной страницы, для категорий, товаров, отзывов на товары, производители, EZ-страницы, отзывы на магазин. <br />
-<p>Подробно о Sitemaps xml Вы можете прочитать на <strong><a href="http://sitemaps.org/" target="_blank" class="splitPageLink">[Sitemaps.org]</a></strong>.</p>
+define('TEXT_SITEMAPXML_TIPS_HEAD', 'Советы:');
+define('TEXT_SITEMAPXML_TIPS_TEXT', '<p>Подробно о Sitemaps xml Вы можете прочитать на <strong><a href="http://sitemaps.org/" target="_blank" class="splitPageLink">[Sitemaps.org]</a></strong>.</p>
 <ol>
 <li>Зарегистрируйтесь: <strong><a href="https://www.google.com/webmasters/tools/home" target="_blank" class="splitPageLink">[Google]</a></strong>, <strong><a href="http://webmaster.yandex.ru/" target="_blank" class="splitPageLink">[Yandex]</a></strong>, <strong><a href="https://ssl.bing.com/webmaster" target="_blank" class="splitPageLink">[Bing]</a></strong>.</li>
 <li>Укажите Ваш Sitemap <input type="text" readonly="readonly" value="' . SITEMAPXML_SITEMAPINDEX_HTTP_LINK . '" size="' . strlen(SITEMAPXML_SITEMAPINDEX_HTTP_LINK) . '" style="border: solid 1px; padding: 0 4px 0 4px;"/> в <strong><a href="https://www.google.com/webmasters/tools/home" target="_blank" class="splitPageLink">[Google]</a></strong>, <strong><a href="http://webmaster.yandex.ru/" target="_blank" class="splitPageLink">[Yandex]</a></strong>, <strong><a href="http://www.bing.com/webmaster/WebmasterAddSitesPage.aspx" target="_blank" class="splitPageLink">[Bing]</a></strong>.</li>
 <li>Укажите адрес Sitemap в Вашем файле <a href="' . HTTP_CATALOG_SERVER . DIR_WS_CATALOG . 'robots.txt' . '" target="_blank" class="splitPageLink">robots.txt</a> (<a href="http://sitemaps.org/protocol.php#submit_robots" target="_blank" class="splitPageLink">подробнее...</a>):<br /><input type="text" readonly="readonly" value="Sitemap: ' . SITEMAPXML_SITEMAPINDEX_HTTP_LINK . '" size="' . strlen('Sitemap: ' . SITEMAPXML_SITEMAPINDEX_HTTP_LINK) . '" style="border: solid 1px; padding: 0 4px 0 4px;"/></li>
 <li>Оповестите поисковые системы об изменениях Ваших Sitemap XML.</li>
-</ol>');
-define('TEXT_SITEMAPXML_TIPS_HEAD', 'Советы:');
-define('TEXT_SITEMAPXML_TIPS_TEXT', 'Чтобы автоматически обновлять sitemaps и автоматически оповещать (пинговать) поисковые системы, необходимо создать cron-задания в Вашей управляющей панели Вашего хостинга.<br />
-Например, для запуска задания ежедневно в 5:0 утра, задайте следующие параметры задания cron (конкретные команды могут отличаться в зависимости от хостинга):
+</ol>
+<p>Чтобы автоматически обновлять sitemaps и автоматически оповещать (пинговать) поисковые системы, необходимо создать cron-задания в Вашей управляющей панели Вашего хостинга.</p>
+<p>Например, для запуска задания ежедневно в 5:0 утра, задайте следующие параметры задания cron (конкретные команды могут отличаться в зависимости от хостинга):</p>
 <div>
 0 5 * * * GET \'http://your_domain/index.php?main_page=sitemapxml\&amp;rebuild=yes\&amp;ping=yes\'<br />
-or<br />
 0 5 * * * wget -q \'http://your_domain/index.php?main_page=sitemapxml\&amp;rebuild=yes\&amp;ping=yes\' -O /dev/null<br />
-or<br />
 0 5 * * * curl -s \'http://your_domain/index.php?main_page=sitemapxml\&amp;rebuild=yes\&amp;ping=yes\'<br />
-or<br />
 0 5 * * * php -f &lt;path to shop&gt;/cgi-bin/sitemapxml.php rebuild=yes ping=yes<br />
 </div>');
 
@@ -55,12 +50,15 @@ define('TEXT_SITEMAPXML_FILE_LIST_TABLE_TYPE', 'Тип');
 define('TEXT_SITEMAPXML_FILE_LIST_TABLE_ITEMS', 'Записей');
 define('TEXT_SITEMAPXML_FILE_LIST_TABLE_ACTION', 'Действие');
 
+define('TEXT_SITEMAPXML_IMAGE_POPUP_ALT', 'открыть sitemap в новом окне');
+define('TEXT_SITEMAPXML_RELOAD_WINDOW', 'Обновить список файлов');
+
 define('TEXT_SITEMAPXML_FILE_LIST_COMMENTS_READONLY', 'Не доступен для записи!!!');
 define('TEXT_SITEMAPXML_FILE_LIST_COMMENTS_IGNORED', 'Игнорируется');
 
 define('TEXT_SITEMAPXML_FILE_LIST_TYPE_URLSET', 'UrlSet');
 define('TEXT_SITEMAPXML_FILE_LIST_TYPE_SITEMAPINDEX', 'SitemapIndex');
-define('TEXT_SITEMAPXML_FILE_LIST_TYPE_UNDEFINE', 'Не определён!!!');
+define('TEXT_SITEMAPXML_FILE_LIST_TYPE_UNDEFINED', 'Не определён!!!');
 
 define('TEXT_ACTION_VIEW_FILE', 'Просмотр');
 define('TEXT_ACTION_TRUNCATE_FILE', 'Очистить');

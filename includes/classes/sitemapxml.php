@@ -3,12 +3,12 @@
  * Sitemap XML
  *
  * @package Sitemap XML
- * @copyright Copyright 2005-2015 Andrew Berezin eCommerce-Service.com
- * @copyright Copyright 2003-2015 Zen Cart Development Team
+ * @copyright Copyright 2005-2016 Andrew Berezin eCommerce-Service.com
+ * @copyright Copyright 2003-2016 Zen Cart Development Team
  * @copyright Portions Copyright 2003 osCommerce
  * @license http://www.zen-cart.com/license/2_0.txt GNU Public License V2.0
  * @link http://www.sitemaps.org/
- * @version $Id: sitemapxml.php, v 3.2.15 12.09.2015 17:54:33 AndrewBerezin $
+ * @version $Id: sitemapxml.php, v 3.8 07.07.2016 12:39:33 AndrewBerezin $
  */
 
 define('TABLE_SITEMAPXML_TEMP', DB_PREFIX . 'sitemapxml_temp');
@@ -28,7 +28,7 @@ class zen_SiteMapXML {
   var $magicSeo = false;
   var $submitFlag_url;
   var $duplicatedLinks;
-  var $checkDublicates;
+  var $checkDuplicates;
   var $checkurl;
 
   var $languageSession = array();
@@ -101,9 +101,9 @@ class zen_SiteMapXML {
     $this->inline = $inline;
     $this->ping = $ping;
     $this->rebuild = $rebuild;
-    $this->checkDublicates = SITEMAPXML_CHECK_DUPLICATES;
+    $this->checkDuplicates = SITEMAPXML_CHECK_DUPLICATES;
     $db->Execute("DROP TABLE IF EXISTS " . TABLE_SITEMAPXML_TEMP);
-    if ($this->checkDublicates == 'mysql') {
+    if ($this->checkDuplicates == 'mysql') {
       $sql = "CREATE TABLE IF NOT EXISTS " . TABLE_SITEMAPXML_TEMP . " (
   `url_hash` CHAR(32) NOT NULL ,
   PRIMARY KEY (`url_hash`)
@@ -250,7 +250,7 @@ class zen_SiteMapXML {
     }
     $loc = $this->_url_encode($loc);
 
-    if (!$this->_checkDublicateLoc($loc)) return false;
+    if (!$this->_checkDuplicateLoc($loc)) return false;
 
     if ($this->checkurl) {
       if (!($info = $this->_curlExecute($loc, 'header')) || $info['http_code'] != 200) return false;
@@ -305,10 +305,6 @@ class zen_SiteMapXML {
   function GenerateSitemapIndex() {
     global $db;
     if ($this->genxml) {
-      echo '<h3>' . TEXT_HEAD_SITEMAP_INDEX . '</h3>';
-      $this->SitemapOpen('index', 0, 'index');
-      $records_count = 0;
-
       $sitemapFiles = array();
       if ($files = glob($this->savepath . $this->sitemap . '*' . '.xml')) {
         $sitemapFiles = array_merge($sitemapFiles, $files);
@@ -317,42 +313,45 @@ class zen_SiteMapXML {
         $sitemapFiles = array_merge($sitemapFiles, $files);
       }
 
-      clearstatcache();
-      foreach ($sitemapFiles as $filename) {
-        $filenameBase = basename($filename);
-        if ($filenameBase != $this->sitemapindex && $this->_checkFContentSitemap($filename)) {
-          $fileURL = $this->base_url . $filenameBase;
-          $fileURL = $this->_url_encode($fileURL);
-          echo TEXT_INCLUDE_FILE . $this->dir_ws . $filenameBase . ' (<a href="' . $fileURL . '" target="_blank">' . $fileURL . '</a>)' . '<br />';
-          $itemRecord = '';
-          $itemRecord .= ' <sitemap>' . "\n";
-          $itemRecord .= '  <loc>' . $fileURL . '</loc>' . "\n";
-          $itemRecord .= '  <lastmod>' . $this->_LastModFormat(filemtime($filename)) . '</lastmod>' . "\n";
-          $itemRecord .= ' </sitemap>' . "\n";
-          $this->sitemapFileBuffer .= $itemRecord;
-          $this->_fileWrite($this->sitemapFileBuffer);
-          $this->sitemapFileSize += strlen($this->sitemapFileBuffer);
-          $this->sitemapFileSizeTotal += strlen($this->sitemapFileBuffer);
-          $this->sitemapFileItems++;
-          $this->sitemapFileItemsTotal++;
-          $this->sitemapFileBuffer = '';
+      if (count($sitemapFiles) > 0) {
+        echo '<h2>' . TEXT_HEAD_SITEMAP_INDEX . '</h2>';
+        $this->SitemapOpen('index', 0, 'index');
+        clearstatcache();
+        foreach ($sitemapFiles as $filename) {
+          $filenameBase = basename($filename);
+          if ($filenameBase != $this->sitemapindex && $this->_checkFContentSitemap($filename)) {
+            $fileURL = $this->base_url . $filenameBase;
+            $fileURL = $this->_url_encode($fileURL);
+            echo TEXT_INCLUDE_FILE . $this->dir_ws . $filenameBase . ' (<a href="' . $fileURL . '" target="_blank">' . $fileURL . '</a>)' . '<br />';
+            $itemRecord = '';
+            $itemRecord .= ' <sitemap>' . "\n";
+            $itemRecord .= '  <loc>' . $fileURL . '</loc>' . "\n";
+            $itemRecord .= '  <lastmod>' . $this->_LastModFormat(filemtime($filename)) . '</lastmod>' . "\n";
+            $itemRecord .= ' </sitemap>' . "\n";
+            $this->sitemapFileBuffer .= $itemRecord;
+            $this->_fileWrite($this->sitemapFileBuffer);
+            $this->sitemapFileSize += strlen($this->sitemapFileBuffer);
+            $this->sitemapFileSizeTotal += strlen($this->sitemapFileBuffer);
+            $this->sitemapFileItems++;
+            $this->sitemapFileItemsTotal++;
+            $this->sitemapFileBuffer = '';
+          }
         }
+
+        $data = '</sitemapindex>';
+        $this->sitemapFileSizeTotal += strlen($data);
+        $this->_fileWrite($data);
+
+        $this->_fileClose();
+
+        echo TEXT_URL_FILE . '<a href="' . $this->base_url_index . $this->sitemapFileName . '" target="_blank">' . $this->base_url_index . $this->sitemapFileName . '</a>' . '<br />';
+        echo sprintf(TEXT_WRITTEN, $this->sitemapFileItems++, $this->sitemapFileSizeTotal, $this->_fileSize($this->savepathIndex . $this->sitemapFileName)) . '<br /><br />';
+      } else {
+        echo '<h2>' . TEXT_HEAD_SITEMAP_INDEX_NONE . '</h2>';//steve prevously created an invalid xml file
       }
-
-      $data = '</sitemapindex>';
-      $this->sitemapFileSizeTotal += strlen($data);
-      $this->_fileWrite($data);
-
-      $this->_fileClose();
-
-      echo TEXT_URL_FILE . '<a href="' . $this->base_url_index . $this->sitemapFileName . '" target="_blank">' . $this->base_url_index . $this->sitemapFileName . '</a>' . '<br />';
-      echo sprintf(TEXT_WRITTEN, $this->sitemapFileItems++, $this->sitemapFileSizeTotal, $this->_fileSize($this->savepathIndex . $this->sitemapFileName)) . '<br /><br />';
-
     }
 
     $db->Execute("DROP TABLE IF EXISTS " . TABLE_SITEMAPXML_TEMP);
-    if ($this->checkDublicates == 'mysql') {
-    }
 
     if ($this->inline) {
       if ($this->submitFlag) {
@@ -723,12 +722,12 @@ class zen_SiteMapXML {
     $this->statisticModuleQueriesTime = $db->total_query_time;
   }
 
-  function _checkDublicateLoc($loc) {
+  function _checkDuplicateLoc($loc) {
     global $db;
-    if ($this->checkDublicates == 'true') {
+    if ($this->checkDuplicates == 'true') {
       if (isset($this->duplicatedLinks[$loc])) return false;
       $this->duplicatedLinks[$loc] = true;
-    } elseif ($this->checkDublicates == 'mysql') {
+    } elseif ($this->checkDuplicates == 'mysql') {
       $url_hash = md5($loc);
       $sql = "SELECT SQL_NO_CACHE COUNT(*) AS total FROM " . TABLE_SITEMAPXML_TEMP . " WHERE url_hash=:urlHash";
       $sql = $db->bindVars($sql, ':urlHash', $url_hash, 'string');

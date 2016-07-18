@@ -8,15 +8,15 @@
  * @copyright Portions Copyright 2003 osCommerce
  * @license http://www.zen-cart.com/license/2_0.txt GNU Public License V2.0
  * @link http://www.sitemaps.org/
- * @version $Id: sitemapxml.php, v 3.2.2 07.05.2012 19:12 AndrewBerezin $
+ * @version $Id: sitemapxml.php, v 3.8 07.07.2016 12:39:33 AndrewBerezin $
  */
 // php -f /home/XXXXXXX/domains/XXXX.ru/public_html/cgi-bin/sitemapxml.php rebuild=yes ping=yes
 // /usr/local/bin/php -f /home/XXXXXXX/data/www/XXXX.ru/cgi-bin/sitemapxml.php rebuild=yes ping=yes
 
-if (!is_file(dirname(__FILE__) . '/includes/configure.php')) {
-  chdir(dirname(__FILE__) . '/../');
+if (!is_file(__DIR__ . '/includes/configure.php')) {
+  chdir(__DIR__ . '/../');
 } else {
-  chdir(dirname(__FILE__));
+  chdir(__DIR__);
 }
 
 if (isset($_SERVER["argc"]) && $_SERVER["argc"] > 1 && empty($_GET)) {

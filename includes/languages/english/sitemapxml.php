@@ -8,7 +8,7 @@
  * @copyright Portions Copyright 2003 osCommerce
  * @license http://www.zen-cart.com/license/2_0.txt GNU Public License V2.0
  * @link http://www.sitemaps.org/
- * @version $Id: sitemapxml.php, v 3.3.2 27.03.2015 18:19:33 AndrewBerezin $
+ * @version $Id: sitemapxml.php, v 3.8 07.07.2016 12:39:33 AndrewBerezin $
  */
 
 define('NAVBAR_TITLE', 'SiteMapXML');
@@ -23,10 +23,12 @@ define('TEXT_URL_FILE', 'URL - ');
 define('TEXT_INCLUDE_FILE', 'Include ');
 define('TEXT_FILE_NOT_CHANGED', 'have not changed - using existing file(s)');
 define('TEXT_FAILED_TO_OPEN', 'Failed to open file "%s"!!!');
-define('TEXT_FAILED_TO_CREATE', 'Can not create file "%s". You may need to use your webhost control panel/file-manager to change the permissions effectively.');
+define('TEXT_FAILED_TO_CREATE', 'Unable to create file "%s". You may need to use your webhost control panel/file-manager to change the permissions effectively.');
 define('TEXT_FAILED_TO_CHMOD', 'File "%s" is Read-Only. You may need to use your webhost control panel/file-manager to change the permissions effectively.');
 
 define('TEXT_HEAD_SITEMAP_INDEX', 'Sitemap Index');
+define('TEXT_HEAD_SITEMAP_INDEX_NONE', 'Sitemap Index not generated: no sitemaps found (no plugins selected)');
+
 define('TEXT_HEAD_PING', 'Ping');
 
 define('TEXT_ERROR_CURL_NOT_FOUND', 'CURL functions not found - required for ping/checkURL functions');
@@ -45,7 +47,7 @@ define('TEXT_HEAD_MAINPAGE', 'Mainpage Sitemap');
 define('TEXT_HEAD_EZPAGES', 'Ezpages Sitemap');
 define('TEXT_HEAD_REVIEWS', 'Reviews Sitemap');
 define('TEXT_HEAD_PRODUCTS_REVIEWS', 'Products Reviews Sitemap');
-define('TEXT_HEAD_TESTIMONIALS', 'Testimonials Sitemap');
+define('TEXT_HEAD_TESTIMONIALS', 'Testimonials Manager Sitemap');
 
 define('TEXT_HEAD_NEWS', 'News Sitemap');
 define('TEXT_HEAD_NEWS_ARTICLES', 'News Articles Sitemap');

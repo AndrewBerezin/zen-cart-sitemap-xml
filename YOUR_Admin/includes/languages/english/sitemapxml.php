@@ -8,59 +8,55 @@
  * @copyright Portions Copyright 2003 osCommerce
  * @license http://www.zen-cart.com/license/2_0.txt GNU Public License V2.0
  * @link http://www.sitemaps.org/
- * @version $Id: sitemapxml.php, v 3.7 07.07.2016 11:25:41 AndrewBerezin $
+ * @version $Id: sitemapxml.php, v 3.8 07.07.2016 12:39:33 AndrewBerezin $
  */
 
 define('SITEMAPXML_SITEMAPINDEX_HTTP_LINK', HTTP_CATALOG_SERVER . DIR_WS_CATALOG . SITEMAPXML_SITEMAPINDEX . '.xml');
 define('HEADING_TITLE', 'Sitemap XML');
-define('TEXT_SITEMAPXML_OVERVIEW_HEAD', 'Overview:');
-define('TEXT_SITEMAPXML_OVERVIEW_TEXT', 'This module: automatically generates several XML sitemaps for your Zen-Cart store: a main site map, categories, products, reviews, EZ-pages, testimonials. <br />
-<p>All about Sitemap facilities you can read at <strong><a href="http://sitemaps.org/" target="_blank" class="splitPageLink">[Sitemaps.org]</a></strong>.</p>
+define('TEXT_SITEMAPXML_TIPS_HEAD', 'Tips');
+define('TEXT_SITEMAPXML_TIPS_TEXT', '<p>You can read all about sitemaps at <strong><a href="http://sitemaps.org/" target="_blank" class="splitPageLink">[Sitemaps.org]</a></strong>.</p>
+<p>Once the sitemaps are generated, you need to get them noticed:</p>
 <ol>
 <li>Register or login to your account: <strong><a href="https://www.google.com/webmasters/tools/home" target="_blank" class="splitPageLink">[Google]</a></strong>, <strong><a href="https://ssl.bing.com/webmaster" target="_blank" class="splitPageLink">[Bing]</a></strong>.</li>
 <li>Submit your Sitemap <input type="text" readonly="readonly" value="' . SITEMAPXML_SITEMAPINDEX_HTTP_LINK . '" size="' . strlen(SITEMAPXML_SITEMAPINDEX_HTTP_LINK) . '" style="border: solid 1px; padding: 0 4px 0 4px;"/> via the search engine\'s submission interface <strong><a href="https://www.google.com/webmasters/tools/home" target="_blank" class="splitPageLink">[Google]</a></strong>, <strong><a href="http://www.bing.com/webmaster/WebmasterAddSitesPage.aspx" target="_blank" class="splitPageLink">[Bing]</a></strong>.</li>
-<li>Specifying the Sitemap location in your <a href="' . HTTP_CATALOG_SERVER . DIR_WS_CATALOG . 'robots.txt' . '" target="_blank" class="splitPageLink">robots.txt</a> file (<a href="http://sitemaps.org/protocol.php#submit_robots" target="_blank" class="splitPageLink">more...</a>):<br /><input type="text" readonly="readonly" value="Sitemap: ' . SITEMAPXML_SITEMAPINDEX_HTTP_LINK . '" size="' . strlen('Sitemap: ' . SITEMAPXML_SITEMAPINDEX_HTTP_LINK) . '" style="border: solid 1px; padding: 0 4px 0 4px;"/></li>
-<li>Notify crawlers of the update to your XML sitemap. <span><b>Note:</b> <i>CURL is used for communication with the crawlers, so must be active on your hosting server (if you need to use a CURL proxy, set the CURL proxy settings under Admin->Configuration->My Store.)</i></span></li>
-</ol>');
-define('TEXT_SITEMAPXML_TIPS_HEAD', 'Tips:');
-define('TEXT_SITEMAPXML_TIPS_TEXT', 'To have update sitemaps and automatically notify crawlers, you will need to set up a Cron job via your host\'s control panel.<br />
-To run it as a cron job (at 5:0am like you wanted), put in your crontab something like the following:
-<div>
-0 5 * * * GET \'http://your_domain/index.php?main_page=sitemapxml\&amp;rebuild=yes\&amp;ping=yes\'<br />
-or<br />
-0 5 * * * wget -q \'http://your_domain/index.php?main_page=sitemapxml\&amp;rebuild=yes\&amp;ping=yes\' -O /dev/null<br />
-or<br />
-0 5 * * * curl -s \'http://your_domain/index.php?main_page=sitemapxml\&amp;rebuild=yes\&amp;ping=yes\'<br />
-or<br />
-0 5 * * * php -f &lt;path to shop&gt;/cgi-bin/sitemapxml.php rebuild=yes ping=yes<br />
-</div>');
+<li>Specify the Sitemap location in your <a href="' . HTTP_CATALOG_SERVER . DIR_WS_CATALOG . 'robots.txt' . '" target="_blank" class="splitPageLink">robots.txt</a> file (<a href="http://sitemaps.org/protocol.php#submit_robots" target="_blank" class="splitPageLink">more...</a>):<br /><input type="text" readonly="readonly" value="Sitemap: ' . SITEMAPXML_SITEMAPINDEX_HTTP_LINK . '" size="' . strlen('Sitemap: ' . SITEMAPXML_SITEMAPINDEX_HTTP_LINK) . '" style="border: solid 1px; padding: 0 4px 0 4px;"/></li>
+<li>Notify crawlers of the update to your XML sitemap.<br /><span><b>Note:</b> <i>CURL is used for communication with the crawlers, so must be active on your hosting server (if you need to use a CURL proxy, set the CURL proxy settings under Admin->Configuration->My Store.)</i></span></li>
+</ol>
+<p>To <em>automatically</em> update sitemaps and notify crawlers, you will need to set up a Cron job via your host\'s control panel.</p>
+<p>To run the generation as a cron job (at 5am for example), you will need to create something similar to the following examples.</p>
+<p>0 5 * * * GET \'http://your_domain/index.php?main_page=sitemapxml\&amp;rebuild=yes\&amp;ping=yes\'</p>
+<p>0 5 * * * wget -q \'http://your_domain/index.php?main_page=sitemapxml\&amp;rebuild=yes\&amp;ping=yes\' -O /dev/null</p>
+<p>0 5 * * * curl -s \'http://your_domain/index.php?main_page=sitemapxml\&amp;rebuild=yes\&amp;ping=yes\'</p>
+<p>0 5 * * * php -f &lt;path to shop&gt;/cgi-bin/sitemapxml.php rebuild=yes ping=yes</p>');
 
-//zen_catalog_href_link(SITEMAPXML_SITEMAPINDEX . '.xml')
-define('TEXT_SITEMAPXML_INSTRUCTIONS_HEAD', 'Create / update your site map:');
-define('TEXT_SITEMAPXML_CHOOSE_PARAMETERS', 'Choose parameters:');
-define('TEXT_SITEMAPXML_CHOOSE_PARAMETERS_PING', 'Pinging Search Engine.');
-define('TEXT_SITEMAPXML_CHOOSE_PARAMETERS_REBUILD', 'Force rebuild all sitemap*.xml files!');
+define('TEXT_SITEMAPXML_INSTRUCTIONS_HEAD', 'Create / update your site map(s)');
+define('TEXT_SITEMAPXML_CHOOSE_PARAMETERS', 'Select Actions');
+define('TEXT_SITEMAPXML_CHOOSE_PARAMETERS_PING', 'Ping Search Engines');
+define('TEXT_SITEMAPXML_CHOOSE_PARAMETERS_REBUILD', 'Rebuild all sitemap*.xml files!');
 define('TEXT_SITEMAPXML_CHOOSE_PARAMETERS_INLINE', 'Output file ' . SITEMAPXML_SITEMAPINDEX . '.xml');
 
-define('TEXT_SITEMAPXML_PLUGINS_LIST', 'Plugins');
-define('TEXT_SITEMAPXML_PLUGINS_LIST_SELECT', 'Select Active Plugins');
+define('TEXT_SITEMAPXML_PLUGINS_LIST', 'Sitemap Plugins');
+define('TEXT_SITEMAPXML_PLUGINS_LIST_SELECT', 'Select Sitemaps to Generate');
 
-define('TEXT_SITEMAPXML_FILE_LIST', 'Sitemap File List');
+define('TEXT_SITEMAPXML_FILE_LIST', 'Sitemaps File List');
 define('TEXT_SITEMAPXML_FILE_LIST_TABLE_FNAME', 'Name');
 define('TEXT_SITEMAPXML_FILE_LIST_TABLE_FSIZE', 'Size');
-define('TEXT_SITEMAPXML_FILE_LIST_TABLE_FTIME', '	Last modification date');
+define('TEXT_SITEMAPXML_FILE_LIST_TABLE_FTIME', 'Last modified');
 define('TEXT_SITEMAPXML_FILE_LIST_TABLE_FPERMS', 'Permissions');
 define('TEXT_SITEMAPXML_FILE_LIST_TABLE_TYPE', 'Type');
 define('TEXT_SITEMAPXML_FILE_LIST_TABLE_ITEMS', 'Items');
 define('TEXT_SITEMAPXML_FILE_LIST_TABLE_COMMENTS', 'Comments');
 define('TEXT_SITEMAPXML_FILE_LIST_TABLE_ACTION', 'Action');
 
+define('TEXT_SITEMAPXML_IMAGE_POPUP_ALT', 'open sitemap in new window');
+define('TEXT_SITEMAPXML_RELOAD_WINDOW', 'Refresh File List');
+
 define('TEXT_SITEMAPXML_FILE_LIST_COMMENTS_READONLY', 'Read Only!!!');
 define('TEXT_SITEMAPXML_FILE_LIST_COMMENTS_IGNORED', 'Ignored');
 
 define('TEXT_SITEMAPXML_FILE_LIST_TYPE_URLSET', 'UrlSet');
 define('TEXT_SITEMAPXML_FILE_LIST_TYPE_SITEMAPINDEX', 'SitemapIndex');
-define('TEXT_SITEMAPXML_FILE_LIST_TYPE_UNDEFINE', 'Undefine!!!');
+define('TEXT_SITEMAPXML_FILE_LIST_TYPE_UNDEFINED', 'Undefined!!!');
 
 define('TEXT_ACTION_VIEW_FILE', 'View');
 define('TEXT_ACTION_TRUNCATE_FILE', 'Truncate');
@@ -106,11 +102,11 @@ define('TEXT_CONFIGURATION_DESCRIPTION_SITEMAPXML_USE_ONLY_DEFAULT_LANGUAGE', 'G
 //define('TEXT_CONFIGURATION_TITLE_SITEMAPXML_USE_DEFAULT_LANGUAGE', 'Generate language for default language');
 //define('TEXT_CONFIGURATION_DESCRIPTION_SITEMAPXML_USE_DEFAULT_LANGUAGE', 'Generate language parameter for default language');
 define('TEXT_CONFIGURATION_TITLE_SITEMAPXML_USE_LANGUAGE_PARM', 'Using parameter language in links');
-define('TEXT_CONFIGURATION_DESCRIPTION_SITEMAPXML_USE_LANGUAGE_PARM', 'Using parameter language in links:<br />true - normally use it,<br />all - using for all langusges including pages for default language,<br />false - don\'t use it');
+define('TEXT_CONFIGURATION_DESCRIPTION_SITEMAPXML_USE_LANGUAGE_PARM', 'Using parameter language in links:<br />true - normally use it,<br />all - using for all languages including pages for default language,<br />false - don\'t use it');
 define('TEXT_CONFIGURATION_TITLE_SITEMAPXML_PING_URLS', 'Ping urls');
 define('TEXT_CONFIGURATION_DESCRIPTION_SITEMAPXML_PING_URLS', 'List of pinging urls separated by ;');
 define('TEXT_CONFIGURATION_TITLE_SITEMAPXML_CHECK_DUPLICATES', 'Check Duplicates');
-define('TEXT_CONFIGURATION_DESCRIPTION_SITEMAPXML_CHECK_DUPLICATES', 'true - check dublicates,<br />mysql - check dublicates using mySQL (used to store a large number of products),<br />false - don\'t check dublicates');
+define('TEXT_CONFIGURATION_DESCRIPTION_SITEMAPXML_CHECK_DUPLICATES', 'true - check duplicates,<br />mysql - check duplicates using mySQL (used to store a large number of products),<br />false - don\'t check duplicates');
 
 define('TEXT_CONFIGURATION_TITLE_SITEMAPXML_HOMEPAGE_ORDERBY', 'Home page order by');
 define('TEXT_CONFIGURATION_DESCRIPTION_SITEMAPXML_HOMEPAGE_ORDERBY', '');

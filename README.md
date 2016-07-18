@@ -1,7 +1,7 @@
 # SitemapXML
 
 ## Version Date
-v 3.7 07.07.2016 11:25:41
+v 3.8 07.07.2016 12:39
 
 Author
 Andrew Berezin http://eCommerce-Service.com
@@ -205,3 +205,5 @@ v 3.3.1 31.01.2015 16:27 - Bug fixes
 v 3.6 26.04.2016 10:33   - Bug fixes
 
 v 3.7 07.07.2016 11:25   - Add configuration parameter for categories paging
+
+v 3.8 07.07.2016 12:39   - Code Review. Thanks to steve aka torvista
