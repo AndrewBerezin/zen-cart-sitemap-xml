@@ -8,7 +8,7 @@
  * @copyright Portions Copyright 2003 osCommerce
  * @license http://www.zen-cart.com/license/2_0.txt GNU Public License V2.0
  * @link http://www.sitemaps.org/
- * @version $Id: sitemapxml.php, v 3.8 07.07.2016 12:39:33 AndrewBerezin $
+ * @version $Id: sitemapxml.php, v 3.9.1 29.08.2016 18:56 AndrewBerezin $
  */
 
 require('includes/application_top.php');
@@ -19,6 +19,11 @@ if (!is_file(DIR_WS_LANGUAGES . $_SESSION['language'] . '/sitemapxml.php')) {
 }
 
 require_once(DIR_WS_MODULES . 'sitemapxml_install.php');
+
+$version = $db->Execute("SELECT configuration_value FROM " . TABLE_CONFIGURATION . " WHERE configuration_key='SITEMAPXML_VERSION'");
+if (!$version->EOF) {
+  define('SITEMAPXML_VERSION_CURRENT', $version->fields['configuration_value']);
+}
 
 $action = (isset($_POST['action']) ? $_POST['action'] : '');
 
@@ -227,7 +232,7 @@ function getFormFields(obj) {
         <td><table style="width:100%">
           <tr>
             <td class="pageHeading"><?php echo HEADING_TITLE; ?></td>
-            <td class="pageHeading right"><?php echo (defined('SITEMAPXML_VERSION') ? ' v ' . SITEMAPXML_VERSION : ''); ?></td>
+            <td class="pageHeading right"><?php echo (defined('SITEMAPXML_VERSION_CURRENT') ? ' v ' . SITEMAPXML_VERSION_CURRENT : ''); ?></td>
           </tr>
         </table></td>
       </tr>
@@ -240,7 +245,8 @@ $configuration_group_id = $db->Execute("SELECT configuration_group_id
 if (!$configuration_group_id->EOF) {
   $sitemapxml_configuration_group_id = $configuration_group_id->fields['configuration_group_id'];
 }
-if (!defined('SITEMAPXML_VERSION') && !isset($sitemapxml_configuration_group_id)) {
+
+if (!defined('SITEMAPXML_VERSION_CURRENT') && !isset($sitemapxml_configuration_group_id)) {
 ?>
       <tr>
         <td>
@@ -248,7 +254,7 @@ if (!defined('SITEMAPXML_VERSION') && !isset($sitemapxml_configuration_group_id)
         </td>
       </tr>
 <?php
-} elseif (SITEMAPXML_VERSION != $current_version) {
+} elseif (SITEMAPXML_VERSION_CURRENT != $current_version) {
 ?>
       <tr>
         <td>
@@ -292,7 +298,7 @@ if ($sitemapxml_install_notes != '') {
 <?php } ?>
 
 <?php
-if (defined('SITEMAPXML_VERSION') && SITEMAPXML_VERSION == $current_version) {
+if (defined('SITEMAPXML_VERSION_CURRENT') && SITEMAPXML_VERSION_CURRENT == $current_version) {
   $start_parms = '';
   if (defined('SITEMAPXML_EXECUTION_TOKEN') && zen_not_null(SITEMAPXML_EXECUTION_TOKEN)) {
     $start_parms = 'token=' . SITEMAPXML_EXECUTION_TOKEN;

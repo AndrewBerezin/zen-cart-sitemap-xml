@@ -7,17 +7,7 @@
  * @version $Id: -install-sitemapxml.php 1.0 19.10.2015 4:36:16 AndrewBerezin $
  */
 
-require('includes/application_top.php');
+// this file is obsolete and should be deleted from server
+// as autoinstaller file set has been added
+// frank18 - 20160520
 
-if (defined('TABLE_ADMIN_PAGES')) {
-//  zen_deregister_admin_pages('sitemapxml');
-  if (!zen_page_key_exists('sitemapxml')) {
-    zen_register_admin_page('sitemapxml', // page_key
-                            'BOX_SITEMAPXML', // language_key
-                            'FILENAME_SITEMAPXML', // main_page
-                            '', // page_params
-                            'tools', // menu_key
-                            'Y', // display_on_menu
-                            100); // sort_order
-  }
-}

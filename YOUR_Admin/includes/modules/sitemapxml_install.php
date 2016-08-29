@@ -8,10 +8,10 @@
  * @copyright Portions Copyright 2003 osCommerce
  * @license http://www.zen-cart.com/license/2_0.txt GNU Public License V2.0
  * @link http://www.sitemaps.org/
- * @version $Id: sitemapxml_install.php, v 3.7 07.07.2016 11:25:41 AndrewBerezin $
+ * @version $Id: sitemapxml_install.php, v 3.9.1 29.08.2016 18:56 AndrewBerezin $
  */
 
-$current_version = '3.7 07.07.2016 11:25:41';
+$current_version = '3.9.1';
 
 if (defined('SITEMAPXML_VERSION')) {
   $default['SITEMAPXML_SITEMAPINDEX'] = 'sitemapindex';
@@ -24,6 +24,7 @@ if (defined('SITEMAPXML_CHECK_DUBLICATES')) {
   $sql = "UPDATE " . TABLE_CONFIGURATION . " SET configuration_key='SITEMAPXML_CHECK_DUPLICATES' where configuration_key='SITEMAPXML_CHECK_DUBLICATES'";
   $db->Execute($sql);
 }
+
 $install_configuration = array(
 'SITEMAPXML_VERSION' => array(TEXT_CONFIGURATION_TITLE_SITEMAPXML_VERSION, $current_version, TEXT_CONFIGURATION_DESCRIPTION_SITEMAPXML_VERSION, -10, null, 'zen_cfg_read_only('),
 

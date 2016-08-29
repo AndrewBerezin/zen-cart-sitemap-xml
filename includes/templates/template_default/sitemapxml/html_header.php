@@ -12,7 +12,6 @@
  */
 ?>
 <!DOCTYPE html>
-<!--steve doctype changed-->
 <html <?php echo HTML_PARAMS; ?>>
 <head>
 <title><?php echo HEADING_TITLE; ?></title>
@@ -20,7 +19,6 @@
 <?php if (defined('FAVICON')) { ?>
 <link rel="icon" href="<?php echo FAVICON; ?>" type="image/x-icon" />
 <link rel="shortcut icon" href="<?php echo FAVICON; ?>" type="image/x-icon" />
-
 <?php } //endif FAVICON ?>
 
 <base href="<?php echo (($request_type == 'SSL') ? HTTPS_SERVER . DIR_WS_HTTPS_CATALOG : HTTP_SERVER . DIR_WS_CATALOG ); ?>" />

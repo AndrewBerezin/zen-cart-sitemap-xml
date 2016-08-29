@@ -1,17 +1,15 @@
 # SitemapXML
 
-## Version Date
+## Version
 v 3.8 07.07.2016 12:39
 
 Author
 Andrew Berezin http://eCommerce-Service.com
 
 Thanks
---------------
 Special thanks to DivaVocals for the quality of the readme.
 
 ## Description
---------------
 This Script generates an Sitemap as described here:
 http://www.sitemaps.org/
 http://support.google.com/webmasters/bin/answer.py?hl=en&answer=156184&topic=8476&ctx=topic
@@ -102,13 +100,10 @@ Install:
      sitemapXML/YOUR_Admin/
 3. Upload the files from "sitemapXML" to the root of your store. (DO NOT upload the "sitemapXML" folder, just the CONTENTS of this folder  (copy ALL of the add-on files to your store!! Most issues are caused by store owners who decide to NOT load ALL of the module files)
 4. Set permissions on the directory /sitemap/ to 777.
-5. Run YOUR_Admin/-install-sitemapxml.php
-6. Go to Admin -> Tools -> Sitemap XML and click "Install SitemapXML SQL".
- If you are using the Admin Profiles contribution, you need to set the Sitemap XML plugin Admin configuration permission. Go to Tools->Admin Settings->Permissions button and put a checkmark at "sitemap XML" plugin. (There are two checkboxes for Sitemap XML; the second is added after the installation done in step 6.)
-7. Go to Admin -> Configuration -> Sitemap XML and setup all parameters.
-8. Go to Admin -> Tools -> Sitemap XML (If error messages occur, change permissions on the XML files to 777).
-9. To have this update and automatically notify Google, you will need to set up a Cron job via your host's control panel.
-10. For Zen-Cart version 1.3.9f and earlier. Edit file includes/.htaccess:
+5. Go to Admin -> Configuration -> Sitemap XML and setup all parameters.
+6. Go to Admin -> Tools -> Sitemap XML (If error messages occur, change permissions on the XML files to 777).
+7. To have this update and automatically notify Google, you will need to set up a Cron job via your host's control panel.
+8. For Zen-Cart version 1.3.9f and earlier. Edit file includes/.htaccess:
   Find
   <FilesMatch ".*\.(js|JS|css|CSS|jpg|JPG|gif|GIF|png|PNG|swf|SWF)$">
   Replace by
@@ -121,7 +116,6 @@ Upgrade:
 2. Rename the "YOUR_Admin" folder in the "sitemapXML" folder to match the name of your admin folder.
      sitemapXML/YOUR_Admin/
 3. Upload the files from "sitemapXML" to the root of your store. (DO NOT upload the "sitemapXML" folder, just the CONTENTS of this folder (copy ALL of the add-on files to your store!! Most issues are caused by store owners who decide to NOT load ALL of the module files)
-4. Go to Admin -> Tools -> XML Sitemap and click "Update SitemapXML".
 
 Deleting OLD copies of this mod (circa 1.3.8 - such as version 2.1.0, which was around for a number of years)
 --------------
@@ -202,8 +196,10 @@ v 3.3.1 31.01.2015 16:27 - Bug fixes
                            Add Product reviews pages
                            Add plugin control
 
-v 3.6 26.04.2016 10:33   - Bug fixes
+v 3.6.0 26.04.2016 10:33   - Bug fixes
 
-v 3.7 07.07.2016 11:25   - Add configuration parameter for categories paging
+v 3.7.0 07.07.2016 11:25   - Add configuration parameter for categories paging
 
-v 3.8 07.07.2016 12:39   - Code Review. Thanks to steve aka torvista
+v 3.8.0 07.07.2016 12:39   - Code Review. Thanks to steve aka torvista
+
+v 3.9.0 29.08.2016 18:56   - Add auto installer. Thanks to Frank Riegel aka frank18
