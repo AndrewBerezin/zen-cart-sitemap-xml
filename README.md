@@ -1,7 +1,7 @@
 # SitemapXML
 
 ## Version
-v 3.8 07.07.2016 12:39
+v 3.9.1 29.08.2016 18:56
 
 Author
 Andrew Berezin http://eCommerce-Service.com
@@ -202,4 +202,4 @@ v 3.7.0 07.07.2016 11:25   - Add configuration parameter for categories paging
 
 v 3.8.0 07.07.2016 12:39   - Code Review. Thanks to steve aka torvista
 
-v 3.9.0 29.08.2016 18:56   - Add auto installer. Thanks to Frank Riegel aka frank18
+v 3.9.1 29.08.2016 18:56   - Add auto installer. Thanks to Frank Riegel aka frank18
