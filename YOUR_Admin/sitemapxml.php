@@ -95,8 +95,8 @@ if (zen_not_null($action)) {
       break;
 
     case 'select_plugins':
-      $plugin = (isset($_POST['plugin']) ? $_POST['plugin'] : '');
-      $active_plugins = $plugin;
+      $active_plugins = (isset($_POST['plugin']) ? $_POST['plugin'] : '');
+      $active_plugins = (is_array($active_plugins) ? implode(';', $active_plugins) : $active_plugins);
       $sql = "UPDATE " . TABLE_CONFIGURATION . " SET configuration_value='" . zen_db_input($active_plugins) . "' where configuration_key='SITEMAPXML_PLUGINS'";
       $db->Execute($sql);
       zen_redirect(zen_href_link(FILENAME_SITEMAPXML));
