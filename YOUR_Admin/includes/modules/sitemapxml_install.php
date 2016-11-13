@@ -8,10 +8,10 @@
  * @copyright Portions Copyright 2003 osCommerce
  * @license http://www.zen-cart.com/license/2_0.txt GNU Public License V2.0
  * @link http://www.sitemaps.org/
- * @version $Id: sitemapxml_install.php, v 3.9.1 29.08.2016 18:56 AndrewBerezin $
+ * @version $Id: sitemapxml_install.php, v 3.9.2 09.11.2016 13:37:18 AndrewBerezin $
  */
 
-$current_version = '3.9.1';
+$current_version = '3.9.2';
 
 if (defined('SITEMAPXML_VERSION')) {
   $default['SITEMAPXML_SITEMAPINDEX'] = 'sitemapindex';
