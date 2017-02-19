@@ -3,15 +3,15 @@
  * Sitemap XML Feed
  *
  * @package Sitemap XML Feed
- * @copyright Copyright 2005-2016 Andrew Berezin eCommerce-Service.com
- * @copyright Copyright 2003-2016 Zen Cart Development Team
+ * @copyright Copyright 2005-2017 Andrew Berezin eCommerce-Service.com
+ * @copyright Copyright 2003-2017 Zen Cart Development Team
  * @copyright Portions Copyright 2003 osCommerce
  * @license http://www.zen-cart.com/license/2_0.txt GNU Public License V2.0
  * @link http://www.sitemaps.org/
- * @version $Id: sitemapxml_install.php, v 3.9.2 09.11.2016 13:37:18 AndrewBerezin $
+ * @version $Id: sitemapxml_install.php, v 3.9.3 19.02.2017 18:11:03 AndrewBerezin $
  */
 
-$current_version = '3.9.2';
+$current_version = '3.9.3';
 
 if (defined('SITEMAPXML_VERSION')) {
   $default['SITEMAPXML_SITEMAPINDEX'] = 'sitemapindex';
@@ -52,7 +52,7 @@ $install_configuration = array(
 'Google => http://www.google.com/webmasters/sitemaps/ping?sitemap=%s;
 Bing => http://www.bing.com/webmaster/ping.aspx?siteMap=%s', TEXT_CONFIGURATION_DESCRIPTION_SITEMAPXML_PING_URLS, 10, null, 'zen_cfg_textarea('),
 
-'SITEMAPXML_PLUGINS' => array(TEXT_CONFIGURATION_TITLE_SITEMAPXML_PLUGINS, 'sitemapxml_boxnews.php;sitemapxml_categories.php;sitemapxml_ezpages.php;sitemapxml_mainpage.php;sitemapxml_manufacturers.php;sitemapxml_news.php;sitemapxml_products.php;sitemapxml_products_reviews.php;sitemapxml_reviews.php;sitemapxml_testimonials.php', TEXT_CONFIGURATION_DESCRIPTION_SITEMAPXML_PLUGINS, 15, null, 'zen_cfg_read_only('),
+'SITEMAPXML_PLUGINS' => array(TEXT_CONFIGURATION_TITLE_SITEMAPXML_PLUGINS, 'sitemapxml_categories.php;sitemapxml_mainpage.php;sitemapxml_manufacturers.php;sitemapxml_products.php;sitemapxml_products_reviews.php;sitemapxml_testimonials.php', TEXT_CONFIGURATION_DESCRIPTION_SITEMAPXML_PLUGINS, 15, null, 'zen_cfg_read_only('),
 
 'SITEMAPXML_HOMEPAGE_ORDERBY' => array(TEXT_CONFIGURATION_TITLE_SITEMAPXML_HOMEPAGE_ORDERBY, 'sort_order ASC', TEXT_CONFIGURATION_DESCRIPTION_SITEMAPXML_HOMEPAGE_ORDERBY, 20, null, null),
 'SITEMAPXML_HOMEPAGE_CHANGEFREQ' => array(TEXT_CONFIGURATION_TITLE_SITEMAPXML_HOMEPAGE_CHANGEFREQ, 'weekly', TEXT_CONFIGURATION_DESCRIPTION_SITEMAPXML_HOMEPAGE_CHANGEFREQ, 21, null, 'zen_cfg_select_option(array(\'no\', \'always\', \'hourly\', \'daily\', \'weekly\', \'monthly\', \'yearly\', \'never\'),'),

@@ -3,10 +3,10 @@
  * ext_modules.php
  *
  * @package ext_modules
- * @copyright Copyright 2004-2013 Andrew Berezin eCommerce-Service.com
- * @copyright Copyright 2003-2013 Zen Cart Development Team
+ * @copyright Copyright 2004-2017 Andrew Berezin eCommerce-Service.com
+ * @copyright Copyright 2003-2017 Zen Cart Development Team
  * @license http://www.zen-cart.com/license/2_0.txt GNU Public License V2.0
- * @version $Id: ext_modules.php, v 1.5 19.06.2014 9:05:38 AndrewBerezin $
+ * @version $Id: ext_modules.php, v 1.6.1 19.02.2017 17:20:16 AndrewBerezin $
  */
 
 class ext_modules {
@@ -23,7 +23,7 @@ class ext_modules {
             WHERE configuration_key LIKE ':prefix:%'
             GROUP BY configuration_group_id";
     $sql = $db->bindVars($sql, ':prefix:', $prefix, 'noquotestring');
-    $configuration_group_id = $db->Execute($sql);
+    $configuration_group_id = $this->db_execute($sql);
     if ($configuration_group_id->RecordCount() > 1) {
       return false;
     }
@@ -34,11 +34,11 @@ class ext_modules {
       $sql = "INSERT INTO " . TABLE_CONFIGURATION_GROUP . " (configuration_group_id, configuration_group_title, configuration_group_description, sort_order, visible) VALUES (NULL, :language_key:, :configuration_group_description:, '1', '1')";
       $sql = $db->bindVars($sql, ':language_key:', constant($language_key), 'string');
       $sql = $db->bindVars($sql, ':configuration_group_description:', $configuration_group_description, 'string');
-      $db->Execute($sql);
+      $this->db_execute($sql);
       $this->configuration_group_id = $db->insert_ID();
       $sql = "UPDATE " . TABLE_CONFIGURATION_GROUP . " SET sort_order = :configuration_group_id: WHERE configuration_group_id = :configuration_group_id: LIMIT 1";
       $sql = $db->bindVars($sql, ':configuration_group_id:', $this->configuration_group_id, 'integer');
-      $db->Execute($sql);
+      $this->db_execute($sql);
     }
 
     if ($page_key != '') {
@@ -62,7 +62,7 @@ class ext_modules {
     global $messageStack;
     $sql = "SELECT * FROM " . TABLE_CONFIGURATION . " WHERE configuration_group_id=:configuration_group_id:";
     $sql = $db->bindVars($sql, ':configuration_group_id:', $this->configuration_group_id, 'integer');
-    $configuration_key = $db->Execute($sql);
+    $configuration_key = $this->db_execute($sql);
     $checkArray = array();
     $this->configUpdates = array('del' => array(), 'add' => array(), 'upd' => array(), );
     while (!$configuration_key->EOF) {
@@ -70,11 +70,11 @@ class ext_modules {
         $this->configUpdates['del'][] = $configuration_key->fields['configuration_key'] . " - " . $sql_array['configuration_title'];
         $sql = "DELETE FROM " . TABLE_CONFIGURATION . " WHERE configuration_id=:configuration_id:";
         $sql = $db->bindVars($sql, ':configuration_id:', $configuration_key->fields['configuration_id'], 'integer');
-        $db->Execute($sql);
+        $this->db_execute($sql);
       } elseif (isset($checkArray[$configuration_key->fields['configuration_key']])) {
         $sql = "DELETE FROM " . TABLE_CONFIGURATION . " WHERE configuration_id=:configuration_id:";
         $sql = $db->bindVars($sql, ':configuration_id:', $configuration_key->fields['configuration_id'], 'integer');
-        $db->Execute($sql);
+        $this->db_execute($sql);
       } else {
         $checkArray[$configuration_key->fields['configuration_key']] = $configuration_key->fields;
       }
@@ -142,19 +142,20 @@ class ext_modules {
     if (strtolower(DB_CHARSET) == 'utf8') {
       $install_sql = str_replace(') ENGINE=MyISAM;', ') ENGINE=MyISAM /*!40101 DEFAULT CHARSET=utf8 */;', $install_sql);
     }
-    $check_query = $db->Execute("SHOW TABLES LIKE '" . $table . "'");
+    $sql = "SHOW TABLES LIKE '" . $table . "'";
+    $check_query = $this->db_execute($sql);
     if ($check_query->EOF) {
-      $db->Execute($install_sql);
+      $this->db_execute($install_sql);
     } else {
 //      $install_sql = str_replace("CREATE TABLE IF NOT EXISTS `" . $table . "` (", "CREATE TABLE IF NOT EXISTS `" . $table . "_temp` (", $install_sql);
       $install_sql = str_replace('`', '', $install_sql);
       $install_sql = str_replace("CREATE TABLE IF NOT EXISTS " . $table . " (", "CREATE TABLE IF NOT EXISTS `" . $table . "_temp` (", $install_sql);
-      $db->Execute($install_sql);
-      $show_columns = $db->Execute("SHOW CREATE TABLE `" . $table . "`");
+      $this->db_execute($install_sql);
+      $show_columns = $this->db_execute("SHOW CREATE TABLE `" . $table . "`");
       $tableFieldsOld = explode("\n", $show_columns->fields['Create Table']);
       unset($tableFieldsOld[0]);
       unset($tableFieldsOld[sizeof($tableFieldsOld)]);
-      $show_columns = $db->Execute("SHOW CREATE TABLE `" . $table . "_temp`");
+      $show_columns = $this->db_execute("SHOW CREATE TABLE `" . $table . "_temp`");
       $tableFieldsNew = explode("\n", $show_columns->fields['Create Table']);
       unset($tableFieldsNew[0]);
       unset($tableFieldsNew[sizeof($tableFieldsNew)]);
@@ -187,14 +188,15 @@ class ext_modules {
         foreach ($tableFieldsOld as $field_name => $field_parms) {
 //          list($field_name, $field_parms) = $this->_extract_field($field);
 //        	echo '<pre>'.__LINE__.': ';var_dump($field, $field_name, $field_parms);echo '</pre>';
-        	$describe = $db->Execute("SHOW FIELDS FROM " . $table . " LIKE '" . $field_name . "'");
+        	$sql = "SHOW FIELDS FROM " . $table . " LIKE '" . $field_name . "'";
+        	$describe = $this->db_execute($sql);
         	if ($describe->EOF) {
-	          $db->Execute("ALTER TABLE `" . $table . "` DROP `" . zen_db_input($field_name) . "`;");
+	          $this->db_execute("ALTER TABLE `" . $table . "` DROP `" . zen_db_input($field_name) . "`;");
 	        }
         }
       }
     }
-    $db->Execute("DROP TABLE IF EXISTS `" . $table . "_temp`");
+    $this->db_execute("DROP TABLE IF EXISTS `" . $table . "_temp`");
   }
 
   function _extract_field($field_str) {
@@ -213,7 +215,8 @@ class ext_modules {
     global $db;
     static $tableFields = array();
     if (!isset($tableFields[$table])) {
-      $describe = $db->Execute("SHOW FIELDS FROM " . $table);
+      $sql = "SHOW FIELDS FROM " . $table;
+      $describe = $this->db_execute($sql);
       while (!$describe->EOF) {
         $tableFields[$table][$describe->fields['Field']] = $describe->fields;
         $describe->MoveNext();
@@ -226,7 +229,7 @@ class ext_modules {
     }
   //  echo '<pre>'.__LINE__.': : ';var_dump($field, $field_parms, isset($tableFields[$table][$field]));echo '</pre>';
     if (!isset($tableFields[$table][$field])) {
-      $db->Execute("ALTER TABLE `" . $table . "` ADD `" . $field . "` " . $field_parms . "");
+      $this->db_execute("ALTER TABLE `" . $table . "` ADD `" . $field . "` " . $field_parms . "");
       $tableFields[$table][$field] = $field_parms;
     } else {
       $parms = $field_parms;
@@ -240,7 +243,7 @@ class ext_modules {
         $sql = "ALTER TABLE `" . $table . "` CHANGE `" . $field . "` `" . $field . "` " . $field_parms . "";
 //        echo $sql . "</td></tr>\n";
   // ALTER TABLE `products` CHANGE `yml_country_of_origin` `yml_country_of_origin` VARCHAR(32) DEFAULT '' NOT NULL
-        $db->Execute($sql);
+        $this->db_execute($sql);
       }
     }
   }
@@ -253,17 +256,17 @@ class ext_modules {
             WHERE configuration_key LIKE ':prefix:%'
             GROUP BY configuration_group_id";
     $sql = $db->bindVars($sql, ':prefix:', $prefix, 'noquotestring');
-    $configuration_group_id = $db->Execute($sql);
+    $configuration_group_id = $this->db_execute($sql);
     if ($configuration_group_id->RecordCount() > 1) {
       return false;
     }
     if (!$configuration_group_id->EOF) {
       $sql = "DELETE FROM " . TABLE_CONFIGURATION . " WHERE configuration_group_id=:configuration_group_id:";
       $sql = $db->bindVars($sql, ':configuration_group_id:', $configuration_group_id->fields['configuration_group_id'], 'integer');
-      $db->Execute($sql);
+      $this->db_execute($sql);
       $sql = "DELETE FROM " . TABLE_CONFIGURATION_GROUP . " WHERE configuration_group_id=:configuration_group_id:";
       $sql = $db->bindVars($sql, ':configuration_group_id:', $configuration_group_id->fields['configuration_group_id'], 'integer');
-      $db->Execute($sql);
+      $this->db_execute($sql);
     }
     return true;
   }
@@ -275,7 +278,7 @@ class ext_modules {
         if (!isset($page['sort_order']) || (int)$page['sort_order'] == 0) {
           $sql = "SELECT MAX(sort_order) AS sort_order_max FROM " . TABLE_ADMIN_PAGES . " WHERE menu_key = :menu_key:";
           $sql = $db->bindVars($sql, ':menu_key:', $page['menu_key'], 'string');
-          $result = $db->Execute($sql);
+          $result = $this->db_execute($sql);
           $page['sort_order'] = $result->fields['sort_order_max']+1;
         }
         zen_register_admin_page($page['page_key'], $page['language_key'], $page['main_page'], $page['page_params'], $page['menu_key'], $page['display_on_menu'], $page['sort_order']);
@@ -290,6 +293,12 @@ class ext_modules {
     if (function_exists('zen_deregister_admin_pages')) {
       zen_deregister_admin_pages($page);
     }
+  }
+
+  function db_execute($sql) {
+    global $db;
+    $rc = $db->Execute($sql, false, false, 0, true);
+    return $rc;
   }
 
 }
