@@ -113,10 +113,6 @@ if (zen_not_null($action)) {
 <link rel="stylesheet" type="text/css" href="includes/stylesheet.css">
 <link rel="stylesheet" type="text/css" href="includes/cssjsmenuhover.css" media="all" id="hoverJS">
 <style type="text/css">
-.alert {
-  color: #FF0000;
-  font-weight: bold;
-}
 .index {
   font-weight: bold;
 }
