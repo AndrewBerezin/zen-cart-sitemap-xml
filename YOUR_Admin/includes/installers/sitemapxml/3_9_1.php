@@ -10,10 +10,7 @@
  * @version     $Id: 3_9_1.php 3.9.1 29.08.2016 18:56 AndrewBerezin $
  */
 
-require_once(DIR_WS_MODULES . 'sitemapxml_install.php');
-//var_dump(SITEMAPXML_VERSION, $current_version, (SITEMAPXML_VERSION != $current_version));
-if (SITEMAPXML_VERSION != $current_version) {
-  require_once(DIR_WS_CLASSES . 'ext_modules.php');
+if ($current_version != $installer) {
   $ext_modules = new ext_modules;
   $ext_modules->install_configuration_group('SITEMAPXML_', 'BOX_CONFIGURATION_SITEMAPXML', 'SitemapXML', 'sitemapxmlConfig');
   $ext_modules->install_configuration($install_configuration);

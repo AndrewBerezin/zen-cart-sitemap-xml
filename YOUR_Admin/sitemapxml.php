@@ -20,7 +20,8 @@ if (!is_file(DIR_WS_LANGUAGES . $_SESSION['language'] . '/sitemapxml.php')) {
 
 require_once(DIR_WS_MODULES . 'sitemapxml_install.php');
 
-$version = $db->Execute("SELECT configuration_value FROM " . TABLE_CONFIGURATION . " WHERE configuration_key='SITEMAPXML_VERSION'");
+$sql = "SELECT configuration_value FROM " . TABLE_CONFIGURATION . " WHERE configuration_key='SITEMAPXML_VERSION'";
+$version = $db->Execute($sql);
 if (!$version->EOF) {
   define('SITEMAPXML_VERSION_CURRENT', $version->fields['configuration_value']);
 }
@@ -234,9 +235,10 @@ function getFormFields(obj) {
       </tr>
 
 <?php
-$configuration_group_id = $db->Execute("SELECT configuration_group_id
-                                        FROM " . TABLE_CONFIGURATION . "
-                                        WHERE configuration_key LIKE 'SITEMAPXML_%' LIMIT 1");
+$sql = "SELECT configuration_group_id
+        FROM " . TABLE_CONFIGURATION . "
+        WHERE configuration_key LIKE 'SITEMAPXML_%' LIMIT 1";
+$configuration_group_id = $db->Execute($sql);
 
 if (!$configuration_group_id->EOF) {
   $sitemapxml_configuration_group_id = $configuration_group_id->fields['configuration_group_id'];

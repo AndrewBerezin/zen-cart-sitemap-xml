@@ -28,11 +28,10 @@ if (!zen_page_key_exists($admin_page)) {
     zen_register_admin_page($admin_page,
                             'BOX_SITEMAPXML',
                             'FILENAME_SITEMAPXML',
-                            'gID=' . $configuration_group_id,
+                            '',
                             'tools',
                             'Y',
                             $configuration_group_id);
-
     $messageStack->add('Successfully enabled Sitemap XML Tool Menu.', 'success');
   }
 }

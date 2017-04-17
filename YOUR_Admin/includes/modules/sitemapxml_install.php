@@ -11,7 +11,8 @@
  * @version $Id: sitemapxml_install.php, v 3.9.3 19.02.2017 18:11:03 AndrewBerezin $
  */
 
-$current_version = '3.9.3';
+//$current_version = '3.9.3';
+require_once(DIR_FS_ADMIN . DIR_WS_LANGUAGES . $_SESSION['language'] . '/sitemapxml.php');
 
 if (defined('SITEMAPXML_VERSION')) {
   $default['SITEMAPXML_SITEMAPINDEX'] = 'sitemapindex';
