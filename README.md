@@ -209,3 +209,5 @@ v 3.9.2 09.11.2016 13:37   - Bug fixes (Select plugins)
 v 3.9.3 16.04.2017 18:35   - Auto installer Bug fixes
 
 v 3.9.4 17.04.2017 14:27   - Another Auto installer Bug fixes
+
+v 3.9.5 17.04.2017 15:55   - Add configuration multilanguage support
