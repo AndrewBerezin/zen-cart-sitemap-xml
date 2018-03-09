@@ -261,7 +261,7 @@ class zen_SiteMapXML {
     if (isset($lastmod) && zen_not_null($lastmod) && (int)$lastmod > 0) {
       $itemRecord .= '  <lastmod>' . $this->_LastModFormat($lastmod) . '</lastmod>' . "\n";
     }
-    if (zen_not_null($changefreq) && $changefreq != 'no') {
+    if (isset($changefreq) && zen_not_null($changefreq) && $changefreq != 'no') {
       $itemRecord .= '  <changefreq>' . $changefreq . '</changefreq>' . "\n";
     }
     if ($this->sitemapFileItemsMax > 0) {
@@ -272,7 +272,7 @@ class zen_SiteMapXML {
     }
     $itemRecord .= ' </url>' . "\n";
 
-    if ($this->sitemapFileItems >= $this->sitemapxml_max_entries || $this->sitemapFileSize+strlen($itemRecord) >= $this->sitemapxml_max_size) {
+    if ($this->sitemapFileItems >= $this->sitemapxml_max_entries || ($this->sitemapFileSize+strlen($itemRecord)) >= $this->sitemapxml_max_size) {
       $this->_SitemapCloseFile();
       $this->sitemapFileName = $this->_getNameFileXML($this->sitemapFile . str_pad($this->sitemapFileNameNumber, 3, '0', STR_PAD_LEFT));
       if (!$this->_fileOpen($this->sitemapFileName)) return false;
@@ -378,12 +378,14 @@ class zen_SiteMapXML {
 
   }
 
+// Replace associated function with ZC equivalent code/call including code that calls this function.
 // retrieve full cPath from category ID
   function GetFullcPath($cID) {
     global $db;
     static $parent_cache = array();
     $cats = array();
     $cats[] = $cID;
+    // Incorporate ZC function(s) to collect this information.
     $sql = "SELECT parent_id, categories_id
             FROM " . TABLE_CATEGORIES . "
             WHERE categories_id=:categoriesID";
@@ -429,6 +431,7 @@ class zen_SiteMapXML {
     return $code;
   }
 
+// ZC code should exist to obtain this.
   function getLanguageDirectory($language_id) {
     if (isset($this->languages[$language_id])) {
       $directory = $this->languages[$language_id]['directory'];
@@ -442,6 +445,7 @@ class zen_SiteMapXML {
     return $this->languagesIDs;
   }
 
+// ZC Sniffer class already offers this feature.
   function dbTableExist($table) {
     global $db;
     $exist = false;
@@ -456,6 +460,7 @@ class zen_SiteMapXML {
     return $exist;
   }
 
+// ZC Sniffer class already offers this feature.
   function dbColumnExist($table, $column) {
     global $db;
     $exist = false;
@@ -471,6 +476,10 @@ class zen_SiteMapXML {
 
   function imagesTags($images, $caption='true', $license_url='') {
     $tags = '';
+    if (isset($images) && !is_array($images)) {
+      // Provided image is not in format to support processing.
+    }
+    
     foreach ($images as $image) {
       $image['title'] = htmlspecialchars($image['title']);
       $loc = HTTP_SERVER . DIR_WS_CATALOG . $image['file'];
