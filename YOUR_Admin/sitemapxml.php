@@ -184,7 +184,7 @@ label.plugin_active {
 <script type="text/javascript">
 function getFormFields(obj) {
   var getParms = "";
-  for (i=0; i<obj.childNodes.length; i++) {
+  for (var i=0; i<obj.childNodes.length; i++) {
     if (obj.childNodes[i].name == "securityToken") continue;
     if (obj.childNodes[i].tagName == "INPUT") {
       if (obj.childNodes[i].type == "text") {
