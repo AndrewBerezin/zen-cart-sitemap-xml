@@ -2,6 +2,11 @@
 /**
  * Sitemap XML
  *
+ * @param $errno
+ * @param $errstr
+ * @param $errfile
+ * @param $errline
+ * @return
  * @package Sitemap XML
  * @copyright Copyright 2005-2015 Andrew Berezin eCommerce-Service.com
  * @copyright Copyright 2003-2015 Zen Cart Development Team
