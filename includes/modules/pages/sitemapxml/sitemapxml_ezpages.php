@@ -132,7 +132,7 @@ if ($sitemapXML->SitemapOpen('ezpages', $last_date)) {
     $page_query->MoveNext();
   }
   $sitemapXML->SitemapClose();
+  unset($page_query);
 }
-unset($page_query);
 
 // EOF

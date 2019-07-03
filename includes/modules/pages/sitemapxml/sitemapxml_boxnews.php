@@ -35,9 +35,9 @@ if ($sitemapXML->dbTableExist('TABLE_BOX_NEWS') && $sitemapXML->dbTableExist('TA
       $news->MoveNext();
     }
     $sitemapXML->SitemapClose();
+    unset($news);
   }
 
 }
-unset($news);
 
 // EOF

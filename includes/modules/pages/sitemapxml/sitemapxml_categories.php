@@ -87,7 +87,7 @@ if ($sitemapXML->SitemapOpen('categories', $last_date)) {
     $categories->MoveNext();
   }
   $sitemapXML->SitemapClose();
+  unset($categories);
 }
-unset($categories);
 
 // EOF

@@ -121,8 +121,8 @@ if (function_exists('zen_get_products_video_file')) {
       $products->MoveNext();
     }
     $zen_SiteMapXML->SitemapClose();
+    unset($products);
   }
 }
-unset($products);
 
 // EOF

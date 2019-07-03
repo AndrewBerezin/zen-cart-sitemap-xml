@@ -41,6 +41,7 @@ if ($sitemapXML->dbTableExist('TABLE_NEWS_ARTICLES')) {
       $news->MoveNext();
     }
     $sitemapXML->SitemapClose();
+    unset($news);
   }
 
   if (false) {
@@ -64,10 +65,10 @@ if ($sitemapXML->dbTableExist('TABLE_NEWS_ARTICLES')) {
         $news->MoveNext();
       }
       $sitemapXML->SitemapClose();
+      unset($news);
     }
   }
 
 }
-unset($news);
 
 // EOF

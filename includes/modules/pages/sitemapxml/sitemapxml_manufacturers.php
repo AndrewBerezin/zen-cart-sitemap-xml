@@ -43,7 +43,7 @@ if ($sitemapXML->SitemapOpen('manufacturers', $last_date)) {
     $manufacturers->MoveNext();
   }
   $sitemapXML->SitemapClose();
+  unset($manufacturers);
 }
-unset($manufacturers);
 
 // EOF

@@ -29,9 +29,9 @@ if ($sitemapXML->dbTableExist('TABLE_TESTIMONIALS_MANAGER')) {
       $testimonials->MoveNext();
     }
     $sitemapXML->SitemapClose();
+    unset($testimonials);
   }
 
 }
-unset($testimonials);
 
 // EOF

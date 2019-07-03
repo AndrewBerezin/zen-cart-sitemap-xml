@@ -22,7 +22,7 @@ if ($sitemapXML->SitemapOpen('mainpage')) {
     $languages->MoveNext();
   }
   $sitemapXML->SitemapClose();
+  unset($languages);
 }
-unset($languages);
 
 // EOF

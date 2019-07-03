@@ -29,7 +29,7 @@ if ($sitemapXML->SitemapOpen('reviews', $last_date)) {
     $reviews->MoveNext();
   }
   $sitemapXML->SitemapClose();
+  unset($reviews);
 }
-unset($reviews);
 
 // EOF

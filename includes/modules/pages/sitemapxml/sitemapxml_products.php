@@ -118,9 +118,9 @@ if ($sitemapXML->SitemapOpen('products', $last_date)) {
     $products->MoveNext();
   }
   $sitemapXML->SitemapClose();
+  mysqli_free_result($products->resource);
+  unset($products);
 }
-mysqli_free_result($products->resource);
-unset($products);
 unset($catsArray);
 
 // EOF
