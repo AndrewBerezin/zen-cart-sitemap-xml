@@ -10,6 +10,16 @@
  * @license http://www.zen-cart.com/license/2_0.txt GNU Public License V2.0
  * @version $Id: html_header.php 6948 2007-09-02 23:30:49Z drbyte $
  */
+if (is_file(DIR_WS_CLASSES . 'Mobile_Detect.php')) {
+  if (!class_exists('Mobile_Detect')) {
+    include_once(DIR_WS_CLASSES . 'Mobile_Detect.php');
+  }
+  $detect = new Mobile_Detect;
+  $isMobile = $detect->isMobile();
+  $isTablet = $detect->isTablet();
+  if (!isset($layoutType)) $layoutType = ($isMobile ? ($isTablet ? 'tablet' : 'mobile') : 'default');
+}
+
 ?>
 <!DOCTYPE html>
 <html <?php echo HTML_PARAMS; ?>>
