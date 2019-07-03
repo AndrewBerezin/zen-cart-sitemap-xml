@@ -293,19 +293,18 @@ class ext_modules {
   function install_admin_pages($page) {
     global $db;
     if (function_exists('zen_register_admin_page')) {
-      if (zen_page_key_exists($page['page_key']) == FALSE) {
-        if (!isset($page['sort_order']) || (int)$page['sort_order'] == 0) {
+      if (zen_page_key_exists($page['page_key']) == false) {
+        if (empty($page['sort_order'])) {
           $sql = "SELECT MAX(sort_order) AS sort_order_max FROM " . TABLE_ADMIN_PAGES . " WHERE menu_key = :menu_key:";
           $sql = $db->bindVars($sql, ':menu_key:', $page['menu_key'], 'string');
           $result = $db->Execute($sql);
           $page['sort_order'] = $result->fields['sort_order_max']+1;
         }
         zen_register_admin_page($page['page_key'], $page['language_key'], $page['main_page'], $page['page_params'], $page['menu_key'], $page['display_on_menu'], $page['sort_order']);
-      } else {
-        return false;
+        return true;
       }
-      return true;
     }
+    return false;
   }
 
   function uninstall_admin_pages($page) {
