@@ -81,7 +81,7 @@ class ext_modules {
     $this->configUpdates = array('del' => array(), 'add' => array(), 'upd' => array(), );
     while (!$configuration_key->EOF) {
       if (!isset($configuration[$configuration_key->fields['configuration_key']])) {
-        $this->configUpdates['del'][] = $configuration_key->fields['configuration_key'] . " - " . $sql_array['configuration_title'];
+        $this->configUpdates['del'][] = $configuration_key->fields['configuration_key'] . " - " . $configuration_key->fields['configuration_title'];
         $sql = "DELETE FROM " . TABLE_CONFIGURATION . " WHERE configuration_id=:configuration_id:";
         $sql = $db->bindVars($sql, ':configuration_id:', $configuration_key->fields['configuration_id'], 'integer');
         $db->Execute($sql);
