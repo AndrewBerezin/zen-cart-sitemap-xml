@@ -84,7 +84,7 @@ define('TEXT_UPGRADE_CONFIG_DEL', '');
 
 ///////////
 define('CFGTITLE_SITEMAPXML_VERSION', 'Module version');
-define('CFGDESC_SITEMAPXML_VERSION', '<img src="images/icon_popup.gif" border="0">&nbsp;<a href="http://ecommerce-service.com/" target="_blank" style="text-decoration: underline; font-weight: bold;">eCommerce Service</a>');
+define('CFGDESC_SITEMAPXML_VERSION', '<img src="images/icon_popup.gif" alt="SitemapXML Version" border="0">&nbsp;<a href="http://ecommerce-service.com/" target="_blank" style="text-decoration: underline; font-weight: bold;">eCommerce Service</a>');
 define('CFGTITLE_SITEMAPXML_SITEMAPINDEX', 'SitemapXML Index file name');
 define('CFGDESC_SITEMAPXML_SITEMAPINDEX', 'SitemapXML Index file name - this file should be given to the search engines');
 define('CFGTITLE_SITEMAPXML_DIR_WS', 'Sitemap directory');

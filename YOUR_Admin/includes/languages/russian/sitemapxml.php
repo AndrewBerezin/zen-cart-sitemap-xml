@@ -86,7 +86,7 @@ define('TEXT_UPGRADE_CONFIG_DEL', '');
 
 ///////////
 define('CFGTITLE_SITEMAPXML_VERSION', 'Версия скрипта');
-define('CFGDESC_SITEMAPXML_VERSION', '<img src="images/icon_popup.gif" border="0">&nbsp;<a href="http://ecommerce-service.com/" target="_blank" style="text-decoration: underline; font-weight: bold;">eCommerce Service</a>');
+define('CFGDESC_SITEMAPXML_VERSION', '<img src="images/icon_popup.gif" alt="SitemapXML Version" border="0">&nbsp;<a href="http://ecommerce-service.com/" target="_blank" style="text-decoration: underline; font-weight: bold;">eCommerce Service</a>');
 define('CFGTITLE_SITEMAPXML_SITEMAPINDEX', 'Имя индексного файла SitemapXML');
 define('CFGDESC_SITEMAPXML_SITEMAPINDEX', 'Имя индексного файла SitemapXML - этот файл должен передаваться поисковым системам');
 define('CFGTITLE_SITEMAPXML_DIR_WS', 'Директория sitemap');
