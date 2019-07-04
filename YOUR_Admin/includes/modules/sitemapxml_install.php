@@ -131,7 +131,7 @@ Bing => http://www.bing.com/webmaster/ping.aspx?siteMap=%s', 'List of pinging ur
   $ext_modules->install_admin_pages($admin_page);
 */
 
-$install_table_sitemapxml_extraurls_sql =
+/*$install_table_sitemapxml_extraurls_sql =
 "CREATE TABLE IF NOT EXISTS `" . TABLE_SITEMAPXML_EXTRAURLS . "` (
   `id` int(11) NOT NULL auto_increment,
   `loc` varchar(256) NOT NULL DEFAULT '',
@@ -139,5 +139,5 @@ $install_table_sitemapxml_extraurls_sql =
   `changefreq` varchar(8) NOT NULL DEFAULT '',
   `priority` varchar(4) NOT NULL DEFAULT '',
   PRIMARY KEY  (`id`)
-) ENGINE=MyISAM" . ((strtolower(DB_CHARSET) == 'utf8') ? ' /*!40101 DEFAULT CHARSET=utf8 */;' : ';');
+) ENGINE=MyISAM" . ((strtolower(DB_CHARSET) == 'utf8') ? ' /*!40101 DEFAULT CHARSET=utf8 */;' : ';');*/
 //  $ext_modules->install_db_table(TABLE_SITEMAPXML_EXTRAURLS, $install_table_sitemapxml_extraurls_sql);
