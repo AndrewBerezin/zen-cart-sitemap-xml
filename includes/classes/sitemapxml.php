@@ -225,6 +225,7 @@ class zen_SiteMapXML {
         if ($langParm != '') {
           $langParm = (strpos($link, '?') === false ? '?' . $langParm : '&' . $langParm);
         }
+        $link = $link . $langParm;
       }
       $_SESSION['language'] = $this->languageSession['language'];
       $_SESSION['languages_id'] = $this->languageSession['languages_id'];
