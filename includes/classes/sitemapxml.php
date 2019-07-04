@@ -105,9 +105,9 @@ class zen_SiteMapXML {
     $db->Execute("DROP TABLE IF EXISTS " . TABLE_SITEMAPXML_TEMP);
     if ($this->checkDuplicates == 'mysql') {
       $sql = "CREATE TABLE IF NOT EXISTS " . TABLE_SITEMAPXML_TEMP . " (
-  `url_hash` CHAR(32) NOT NULL ,
-  PRIMARY KEY (`url_hash`)
-) ENGINE = MEMORY;";
+        `url_hash` CHAR(32) NOT NULL ,
+        PRIMARY KEY (`url_hash`)
+      ) ENGINE = MEMORY;";
       $db->Execute($sql);
     }
 
