@@ -101,7 +101,6 @@ Bing => http://www.bing.com/webmaster/ping.aspx?siteMap=%s', CFGDESC_SITEMAPXML_
 /*
 'SITEMAPXML_VIDEO_PING_URLS' => array('Ping urls',
 'Google => http://www.google.com/webmasters/sitemaps/ping?sitemap=%s;
-Ask.com => http://submissions.ask.com/ping?sitemap=%s;
 Bing => http://www.bing.com/webmaster/ping.aspx?siteMap=%s', 'List of pinging urls separated by ;', 10, null, 'zen_cfg_textarea('),
 */
 );
