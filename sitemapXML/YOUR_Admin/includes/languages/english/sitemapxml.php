@@ -13,15 +13,12 @@
 
 if (defined('SITEMAPXML_SITEMAPINDEX')) {
   define('SITEMAPXML_SITEMAPINDEX_HTTP_LINK', HTTP_CATALOG_SERVER . DIR_WS_CATALOG . SITEMAPXML_SITEMAPINDEX . '.xml');
-}
-define('HEADING_TITLE', 'Sitemap XML');
-define('TEXT_SITEMAPXML_TIPS_HEAD', 'Tips');
-define('TEXT_SITEMAPXML_TIPS_TEXT', '<p>You can read all about sitemaps at <strong><a href="http://sitemaps.org/" target="_blank" class="splitPageLink">[Sitemaps.org]</a></strong>.</p>
+  define('TEXT_SITEMAPXML_TIPS_TEXT', '<p>You can read all about sitemaps at <strong><a href="http://sitemaps.org/" target="_blank" class="splitPageLink">[Sitemaps.org]</a></strong>.</p>
 <p>Once the sitemaps are generated, you need to get them noticed:</p>
 <ol>
 <li>Register or login to your account: <strong><a href="https://www.google.com/webmasters/tools/home" target="_blank" class="splitPageLink">[Google]</a></strong>, <strong><a href="https://ssl.bing.com/webmaster" target="_blank" class="splitPageLink">[Bing]</a></strong>.</li>
-<li>Submit your Sitemap <input type="text" readonly="readonly" value="' . SITEMAPXML_SITEMAPINDEX_HTTP_LINK . '" size="' . strlen(SITEMAPXML_SITEMAPINDEX_HTTP_LINK) . '" style="border: solid 1px; padding: 0 4px 0 4px;"/> via the search engine\'s submission interface <strong><a href="https://www.google.com/webmasters/tools/home" target="_blank" class="splitPageLink">[Google]</a></strong>, <strong><a href="http://www.bing.com/webmaster/WebmasterAddSitesPage.aspx" target="_blank" class="splitPageLink">[Bing]</a></strong>.</li>
-<li>Specify the Sitemap location in your <a href="' . HTTP_CATALOG_SERVER . DIR_WS_CATALOG . 'robots.txt' . '" target="_blank" class="splitPageLink">robots.txt</a> file (<a href="http://sitemaps.org/protocol.php#submit_robots" target="_blank" class="splitPageLink">more...</a>):<br /><input type="text" readonly="readonly" value="Sitemap: ' . SITEMAPXML_SITEMAPINDEX_HTTP_LINK . '" size="' . strlen('Sitemap: ' . SITEMAPXML_SITEMAPINDEX_HTTP_LINK) . '" style="border: solid 1px; padding: 0 4px 0 4px;"/></li>
+<li>Submit your Sitemap <input type="text" readonly="readonly" value="' . SITEMAPXML_SITEMAPINDEX_HTTP_LINK . '" size="' . (strlen(SITEMAPXML_SITEMAPINDEX_HTTP_LINK) + 4) . '" style="border: solid 1px; padding: 0 4px 0 4px;"/> via the search engine\'s submission interface <strong><a href="https://www.google.com/webmasters/tools/home" target="_blank" class="splitPageLink">[Google]</a></strong>, <strong><a href="http://www.bing.com/webmaster/WebmasterAddSitesPage.aspx" target="_blank" class="splitPageLink">[Bing]</a></strong>.</li>
+<li>Specify the Sitemap location in your <a href="' . HTTP_CATALOG_SERVER . DIR_WS_CATALOG . 'robots.txt' . '" target="_blank" class="splitPageLink">robots.txt</a> file (<a href="http://sitemaps.org/protocol.php#submit_robots" target="_blank" class="splitPageLink">more...</a>):<br /><input type="text" readonly="readonly" value="Sitemap: ' . SITEMAPXML_SITEMAPINDEX_HTTP_LINK . '" size="' . (strlen('Sitemap: ' . SITEMAPXML_SITEMAPINDEX_HTTP_LINK) + 4) . '" style="border: solid 1px; padding: 0 4px 0 4px;"/></li>
 <li>Notify crawlers of the update to your XML sitemap.<br /><span><b>Note:</b> <i>CURL is used for communication with the crawlers, so must be active on your hosting server (if you need to use a CURL proxy, set the CURL proxy settings under Admin->Configuration->My Store.)</i></span></li>
 </ol>
 <p>To <em>automatically</em> update sitemaps and notify crawlers, you will need to set up a Cron job via your host\'s control panel.</p>
@@ -31,13 +28,14 @@ define('TEXT_SITEMAPXML_TIPS_TEXT', '<p>You can read all about sitemaps at <stro
 <p>0 5 * * * curl -s \'http://your_domain/index.php?main_page=sitemapxml\&amp;rebuild=yes\&amp;ping=yes\'</p>
 <p>0 5 * * * php -f &lt;path to shop&gt;/cgi-bin/sitemapxml.php rebuild=yes ping=yes</p>');
 
+define('TEXT_SITEMAPXML_CHOOSE_PARAMETERS_INLINE', 'Output file ' . SITEMAPXML_SITEMAPINDEX . '.xml');
+}
+define('HEADING_TITLE', 'Sitemap XML');
+define('TEXT_SITEMAPXML_TIPS_HEAD', 'Tips');
 define('TEXT_SITEMAPXML_INSTRUCTIONS_HEAD', 'Create / update your site map(s)');
 define('TEXT_SITEMAPXML_CHOOSE_PARAMETERS', 'Select Actions');
 define('TEXT_SITEMAPXML_CHOOSE_PARAMETERS_PING', 'Ping Search Engines');
 define('TEXT_SITEMAPXML_CHOOSE_PARAMETERS_REBUILD', 'Rebuild all sitemap*.xml files!');
-if (defined('SITEMAPXML_SITEMAPINDEX')) {
-  define('TEXT_SITEMAPXML_CHOOSE_PARAMETERS_INLINE', 'Output file ' . SITEMAPXML_SITEMAPINDEX . '.xml');
-}
 
 define('TEXT_SITEMAPXML_PLUGINS_LIST', 'Sitemap Plugins');
 define('TEXT_SITEMAPXML_PLUGINS_LIST_SELECT', 'Select Sitemaps to Generate');
