@@ -11,7 +11,9 @@
  * @version $Id: sitemapxml.php, v 3.8 07.07.2016 12:39:33 AndrewBerezin $
  */
 
-define('SITEMAPXML_SITEMAPINDEX_HTTP_LINK', HTTP_CATALOG_SERVER . DIR_WS_CATALOG . SITEMAPXML_SITEMAPINDEX . '.xml');
+if (defined('SITEMAPXML_SITEMAPINDEX')) {
+  define('SITEMAPXML_SITEMAPINDEX_HTTP_LINK', HTTP_CATALOG_SERVER . DIR_WS_CATALOG . SITEMAPXML_SITEMAPINDEX . '.xml');
+}
 define('HEADING_TITLE', 'Sitemap XML');
 define('TEXT_SITEMAPXML_TIPS_HEAD', 'Tips');
 define('TEXT_SITEMAPXML_TIPS_TEXT', '<p>You can read all about sitemaps at <strong><a href="http://sitemaps.org/" target="_blank" class="splitPageLink">[Sitemaps.org]</a></strong>.</p>
@@ -33,7 +35,9 @@ define('TEXT_SITEMAPXML_INSTRUCTIONS_HEAD', 'Create / update your site map(s)');
 define('TEXT_SITEMAPXML_CHOOSE_PARAMETERS', 'Select Actions');
 define('TEXT_SITEMAPXML_CHOOSE_PARAMETERS_PING', 'Ping Search Engines');
 define('TEXT_SITEMAPXML_CHOOSE_PARAMETERS_REBUILD', 'Rebuild all sitemap*.xml files!');
-define('TEXT_SITEMAPXML_CHOOSE_PARAMETERS_INLINE', 'Output file ' . SITEMAPXML_SITEMAPINDEX . '.xml');
+if (defined('SITEMAPXML_SITEMAPINDEX')) {
+  define('TEXT_SITEMAPXML_CHOOSE_PARAMETERS_INLINE', 'Output file ' . SITEMAPXML_SITEMAPINDEX . '.xml');
+}
 
 define('TEXT_SITEMAPXML_PLUGINS_LIST', 'Sitemap Plugins');
 define('TEXT_SITEMAPXML_PLUGINS_LIST_SELECT', 'Select Sitemaps to Generate');
