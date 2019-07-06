@@ -96,7 +96,7 @@ class ext_modules {
     }
 
     foreach ($configuration as $configKey => $configSql) {
-      list($configuration_title, $configuration_value, $configuration_description, $sort_order, $use_function, $set_function, $configuration_group_id) = $configSql;
+      list($configuration_title, $configuration_value, $configuration_description, $sort_order, $use_function, $set_function/*, $configuration_group_id*/) = $configSql;
       if (!isset($configuration_group_id) || $configuration_group_id == 0) {
         $configuration_group_id = $this->configuration_group_id;
       }
