@@ -247,7 +247,8 @@ class ext_modules {
     }
   //  echo '<pre>'.__LINE__.': : ';var_dump($field, $field_parms, isset($tableFields[$table][$field]));echo '</pre>';
     if (!isset($tableFields[$table][$field])) {
-      $sql = "ALTER TABLE `" . $table . "` ADD `" . $field . "` " . $field_parms . "";
+
+      $sql = "ALTER TABLE `" . $table . "` ADD `" . $field . "` " . $field_parms;
       $db->Execute($sql);
       $tableFields[$table][$field] = $field_parms;
     } else {
@@ -259,7 +260,7 @@ class ext_modules {
   //    echo '<pre>'.__LINE__.': : ';var_dump($parms);echo '</pre>';
   //    echo '<pre>'.__LINE__.': : ';var_dump($tableFields[$table][$field]['Type'] . " " . "default '" . $tableFields[$table][$field]['Default'] . "'" . " " . ($tableFields[$table][$field]['Null']=="NO" ? 'not ' : '') . "null");echo '</pre>';
       if ($tableFields[$table][$field]['Type'] . " " . "default '" . $tableFields[$table][$field]['Default'] . "'" . " " . ($tableFields[$table][$field]['Null']=="NO" ? 'not ' : '') . "null" !=  $parms) {
-        $sql = "ALTER TABLE `" . $table . "` CHANGE `" . $field . "` `" . $field . "` " . $field_parms . "";
+        $sql = "ALTER TABLE `" . $table . "` CHANGE `" . $field . "` `" . $field . "` " . $field_parms;
 //        echo $sql . "</td></tr>\n";
   // ALTER TABLE `products` CHANGE `yml_country_of_origin` `yml_country_of_origin` VARCHAR(32) DEFAULT '' NOT NULL
         $db->Execute($sql);

@@ -14,7 +14,7 @@ define('SITEMAPXML_PRODUCTS_IMAGES_ADDITIONAL', 'false'); // true false
 define('SITEMAPXML_PRODUCTS_IMAGES_FUNCTION', 'false'); // true false
 
 echo '<h3>' . TEXT_HEAD_PRODUCTS . '</h3>';
-$sql = "select * from " . TABLE_PRODUCT_TYPES . "";
+$sql = "select * from " . TABLE_PRODUCT_TYPES;
 $products_handler_array = array(0 => 'product_info');
 $zp_handler = $db->Execute($sql);
 while (!$zp_handler->EOF) {
