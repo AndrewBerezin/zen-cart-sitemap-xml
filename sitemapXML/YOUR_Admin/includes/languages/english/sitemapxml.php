@@ -32,6 +32,9 @@ define('TEXT_SITEMAPXML_CHOOSE_PARAMETERS_INLINE', 'Output file ' . SITEMAPXML_S
 }
 define('HEADING_TITLE', 'Sitemap XML');
 define('TEXT_SITEMAPXML_TIPS_HEAD', 'Tips');
+if (!defined('TEXT_SITEMAPXML_TIPS_TEXT')) {
+  define('TEXT_SITEMAPXML_TIPS_TEXT', '<p>To learn more about how to manage the sitemaps of this software, please <a href="' . zen_href_link($current_page, zen_get_all_get_params()) . '">reload</a> this page.</p>');
+}
 define('TEXT_SITEMAPXML_INSTRUCTIONS_HEAD', 'Create / update your site map(s)');
 define('TEXT_SITEMAPXML_CHOOSE_PARAMETERS', 'Select Actions');
 define('TEXT_SITEMAPXML_CHOOSE_PARAMETERS_PING', 'Ping Search Engines');
