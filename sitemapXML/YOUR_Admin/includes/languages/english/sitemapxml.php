@@ -28,7 +28,7 @@ if (defined('SITEMAPXML_SITEMAPINDEX')) {
 <p>0 5 * * * curl -s \'http://your_domain/index.php?main_page=sitemapxml\&amp;rebuild=yes\&amp;ping=yes\'</p>
 <p>0 5 * * * php -f &lt;path to shop&gt;/cgi-bin/sitemapxml.php rebuild=yes ping=yes</p>');
 
-define('TEXT_SITEMAPXML_CHOOSE_PARAMETERS_INLINE', 'Output file ' . SITEMAPXML_SITEMAPINDEX . '.xml');
+  define('TEXT_SITEMAPXML_CHOOSE_PARAMETERS_INLINE', 'Output file ' . SITEMAPXML_SITEMAPINDEX . '.xml');
 }
 define('HEADING_TITLE', 'Sitemap XML');
 define('TEXT_SITEMAPXML_TIPS_HEAD', 'Tips');
