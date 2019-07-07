@@ -252,7 +252,7 @@ if (!defined('SITEMAPXML_VERSION_CURRENT') && !isset($sitemapxml_configuration_g
         </td>
       </tr>
 <?php
-} elseif (SITEMAPXML_VERSION_CURRENT != $sitemap_current_version) {
+} elseif (defined('SITEMAPXML_VERSION_CURRENT') && !empty($sitemap_current_version) && SITEMAPXML_VERSION_CURRENT != $sitemap_current_version) {
 ?>
       <tr>
         <td>
@@ -296,7 +296,7 @@ if ($sitemapxml_install_notes != '') {
 <?php } ?>
 
 <?php
-if (defined('SITEMAPXML_VERSION_CURRENT') && SITEMAPXML_VERSION_CURRENT == $sitemap_current_version) {
+if (defined('SITEMAPXML_VERSION_CURRENT') && (empty($sitemap_current_version) || SITEMAPXML_VERSION_CURRENT == $sitemap_current_version)) {
   $start_parms = '';
   if (defined('SITEMAPXML_EXECUTION_TOKEN') && zen_not_null(SITEMAPXML_EXECUTION_TOKEN)) {
     $start_parms = 'token=' . SITEMAPXML_EXECUTION_TOKEN;

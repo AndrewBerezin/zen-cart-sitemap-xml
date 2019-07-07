@@ -27,7 +27,7 @@ if (defined('SITEMAPXML_CHECK_DUBLICATES')) {
 }
 
 $install_configuration = array(
-'SITEMAPXML_VERSION' => array(CFGTITLE_SITEMAPXML_VERSION, $current_version, CFGDESC_SITEMAPXML_VERSION, -10, null, 'zen_cfg_read_only('),
+'SITEMAPXML_VERSION' => array(CFGTITLE_SITEMAPXML_VERSION, (!empty($sitemap_current_version) ? $sitemap_current_version : 'unknown'), CFGDESC_SITEMAPXML_VERSION, -10, null, 'zen_cfg_read_only('),
 
 'SITEMAPXML_SITEMAPINDEX' => array(CFGTITLE_SITEMAPXML_SITEMAPINDEX, $default['SITEMAPXML_SITEMAPINDEX'], CFGDESC_SITEMAPXML_SITEMAPINDEX, 1, null, null),
 
