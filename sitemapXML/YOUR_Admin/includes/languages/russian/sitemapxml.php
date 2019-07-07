@@ -11,10 +11,9 @@
  * @version $Id: sitemapxml.php, v 3.8 07.07.2016 12:39:33 AndrewBerezin $
  */
 
-define('SITEMAPXML_SITEMAPINDEX_HTTP_LINK', HTTP_CATALOG_SERVER . DIR_WS_CATALOG . SITEMAPXML_SITEMAPINDEX . '.xml');
-define('HEADING_TITLE', 'Sitemap XML');
-define('TEXT_SITEMAPXML_TIPS_HEAD', 'Советы:');
-define('TEXT_SITEMAPXML_TIPS_TEXT', '<p>Подробно о Sitemaps xml Вы можете прочитать на <strong><a href="http://sitemaps.org/" target="_blank" class="splitPageLink">[Sitemaps.org]</a></strong>.</p>
+if (defined('SITEMAPXML_SITEMAPINDEX')) {
+  define('SITEMAPXML_SITEMAPINDEX_HTTP_LINK', HTTP_CATALOG_SERVER . DIR_WS_CATALOG . SITEMAPXML_SITEMAPINDEX . '.xml');
+  define('TEXT_SITEMAPXML_TIPS_TEXT', '<p>Подробно о Sitemaps xml Вы можете прочитать на <strong><a href="http://sitemaps.org/" target="_blank" class="splitPageLink">[Sitemaps.org]</a></strong>.</p>
 <ol>
 <li>Зарегистрируйтесь: <strong><a href="https://www.google.com/webmasters/tools/home" target="_blank" class="splitPageLink">[Google]</a></strong>, <strong><a href="http://webmaster.yandex.ru/" target="_blank" class="splitPageLink">[Yandex]</a></strong>, <strong><a href="https://ssl.bing.com/webmaster" target="_blank" class="splitPageLink">[Bing]</a></strong>.</li>
 <li>Укажите Ваш Sitemap <input type="text" readonly="readonly" value="' . SITEMAPXML_SITEMAPINDEX_HTTP_LINK . '" size="' . strlen(SITEMAPXML_SITEMAPINDEX_HTTP_LINK) . '" style="border: solid 1px; padding: 0 4px 0 4px;"/> в <strong><a href="https://www.google.com/webmasters/tools/home" target="_blank" class="splitPageLink">[Google]</a></strong>, <strong><a href="http://webmaster.yandex.ru/" target="_blank" class="splitPageLink">[Yandex]</a></strong>, <strong><a href="http://www.bing.com/webmaster/WebmasterAddSitesPage.aspx" target="_blank" class="splitPageLink">[Bing]</a></strong>.</li>
@@ -29,13 +28,18 @@ define('TEXT_SITEMAPXML_TIPS_TEXT', '<p>Подробно о Sitemaps xml Вы м
 0 5 * * * curl -s \'http://your_domain/index.php?main_page=sitemapxml\&amp;rebuild=yes\&amp;ping=yes\'<br />
 0 5 * * * php -f &lt;path to shop&gt;/cgi-bin/sitemapxml.php rebuild=yes ping=yes<br />
 </div>');
-
+  define('TEXT_SITEMAPXML_CHOOSE_PARAMETERS_INLINE', 'Показать файл ' . SITEMAPXML_SITEMAPINDEX . '.xml');
+}
+define('HEADING_TITLE', 'Sitemap XML');
+define('TEXT_SITEMAPXML_TIPS_HEAD', 'Советы:');
 //zen_catalog_href_link(SITEMAPXML_SITEMAPINDEX . '.xml')
+if (!defined('TEXT_SITEMAPXML_TIPS_TEXT')) {
+  define('TEXT_SITEMAPXML_TIPS_TEXT', '<p>To learn more about how to manage the sitemaps of this software, please <a href="' . zen_href_link($current_page, zen_get_all_get_params()) . '">reload</a> this page.</p>');
+}
 define('TEXT_SITEMAPXML_INSTRUCTIONS_HEAD', 'Создать / обновить Ваши Sitemap:');
 define('TEXT_SITEMAPXML_CHOOSE_PARAMETERS', 'Выберите параметры:');
 define('TEXT_SITEMAPXML_CHOOSE_PARAMETERS_PING', 'Пинговать поисковые системы ');
 define('TEXT_SITEMAPXML_CHOOSE_PARAMETERS_REBUILD', 'Перезаписать все существующие файлы sitemap*.xml!');
-define('TEXT_SITEMAPXML_CHOOSE_PARAMETERS_INLINE', 'Показать файл ' . SITEMAPXML_SITEMAPINDEX . '.xml');
 
 define('TEXT_SITEMAPXML_PLUGINS_LIST', 'Плагины');
 define('TEXT_SITEMAPXML_PLUGINS_LIST_SELECT', 'Отметьте активные плагины');
@@ -45,9 +49,9 @@ define('TEXT_SITEMAPXML_FILE_LIST_TABLE_FNAME', 'Имя');
 define('TEXT_SITEMAPXML_FILE_LIST_TABLE_FSIZE', 'Размер');
 define('TEXT_SITEMAPXML_FILE_LIST_TABLE_FTIME', 'Дата');
 define('TEXT_SITEMAPXML_FILE_LIST_TABLE_FPERMS', 'Permissions');
-define('TEXT_SITEMAPXML_FILE_LIST_TABLE_COMMENTS', 'Комментарии');
 define('TEXT_SITEMAPXML_FILE_LIST_TABLE_TYPE', 'Тип');
 define('TEXT_SITEMAPXML_FILE_LIST_TABLE_ITEMS', 'Записей');
+define('TEXT_SITEMAPXML_FILE_LIST_TABLE_COMMENTS', 'Комментарии');
 define('TEXT_SITEMAPXML_FILE_LIST_TABLE_ACTION', 'Действие');
 
 define('TEXT_SITEMAPXML_IMAGE_POPUP_ALT', 'открыть sitemap в новом окне');
