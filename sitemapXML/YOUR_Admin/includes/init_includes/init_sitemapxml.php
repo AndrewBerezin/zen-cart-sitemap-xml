@@ -169,3 +169,4 @@ if ($zencart_com_plugin_id != 0) {
       $messageStack->add("Version ".$new_version_details['latest_plugin_version']." of " . $new_version_details['title'] . ' is available at <a href="' . $new_version_details['link'] . '" target="_blank">[Details]</a>', 'caution');
   }
 }
+$sitemap_current_version = $current_version;
