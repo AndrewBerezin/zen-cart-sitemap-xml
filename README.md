@@ -1,7 +1,7 @@
 # SitemapXML
 
 ## Version
-v 3.9.3 16.04.2017 18:35
+v 3.9.6 06.Jul.2017 18:35
 
 Author
 Andrew Berezin http://eCommerce-Service.com
@@ -10,13 +10,13 @@ Thanks
 Special thanks to DivaVocals for the quality of the readme.
 
 ## Description
-This Script generates an Sitemap as described here:
+This Script generates a Sitemap as described here:
 http://www.sitemaps.org/
 http://support.google.com/webmasters/bin/answer.py?hl=en&answer=156184&topic=8476&ctx=topic
 
 Zen-Cart Version
 --------------
-1.3.8, 1.3.9x, 1.5.5
+1.3.8, 1.3.9x, 1.5.5, 1.5.6
 
 Support thread
 --------------
@@ -25,6 +25,8 @@ http://www.zen-cart.com/showthread.php?126810-SitemapXML-v-2
 http://zen-cart.su/plugins/sitemap-xml/msg7/
 
 https://github.com/AndrewBerezin/zen-cart-sitemap-xml
+
+https://github.com/mc12345678/zen-cart-sitemap-xml
 
 Affected files
 --------------
@@ -211,3 +213,9 @@ v 3.9.3 16.04.2017 18:35   - Auto installer Bug fixes
 v 3.9.4 17.04.2017 14:27   - Another Auto installer Bug fixes
 
 v 3.9.5 17.04.2017 15:55   - Add configuration multilanguage support
+
+v 3.9.6 06.07.2019 13:33   - Arrange for PHP 7.3, 
+                             incorporate fixes posted to forum, 
+                             incorporate fix for responsive_classic,
+                             refactored various code.
+                             Addressed strict php notifications
